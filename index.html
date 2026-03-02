@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venturi AI - Automações Inteligentes com I.A</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .nav-btn {
+            padding: 10px 24px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #a78bfa;
+            margin-bottom: 30px;
+        }
+
+        .badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #6366f1;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            max-width: 800px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #888;
+            max-width: 520px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            padding: 16px 32px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 80px;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat h3 {
+            font-size: 36px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366f1, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat p {
+            font-size: 14px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 60px;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 44px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .section-title p {
+            color: #888;
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 60px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-content {
+            max-width: 1100px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 44px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .about-text h2 span {
+            background: linear-gradient(135deg, #6366f1, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-text p {
+            color: #888;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .about-features {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            color: #ccc;
+        }
+
+        .about-feature .check {
+            width: 24px;
+            height: 24px;
+            background: rgba(99, 102, 241, 0.2);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8b5cf6;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .about-visual {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            border-radius: 20px;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+
+        .about-visual .big-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .about-visual p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 60px;
+            text-align: center;
+        }
+
+        .contact-box {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 60px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+        }
+
+        .contact-box h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .contact-box p {
+            color: #888;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ccc;
+            font-size: 16px;
+        }
+
+        .contact-item span {
+            color: #8b5cf6;
+        }
+
+        .contact-btn {
+            margin-top: 30px;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer p {
+            color: #444;
+            font-size: 13px;
+        }
+
+        footer .logo-footer {
+            font-size: 18px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Privacy Section */
+        .privacy {
+            padding: 40px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .privacy h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #ccc;
+        }
+
+        .privacy p {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+                letter-spacing: -1px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 30px;
+                align-items: center;
+            }
+
+            .services {
+                padding: 60px 20px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                padding: 60px 20px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-text h2 {
+                font-size: 32px;
+            }
+
+            .contact {
+                padding: 60px 20px;
+            }
+
+            .contact-box {
+                padding: 30px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Venturi AI</div>
+        <ul class="nav-links">
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="#privacidade">Privacidade</a></li>
+        </ul>
+        <a href="mailto:isaquesilva220@gmail.com" class="nav-btn">Fale Conosco</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="badge">Inteligência Artificial Avançada</div>
+        <h1>Automações<br><span>inteligentes</span><br>para seu negócio</h1>
+        <p>Transformamos a forma como empresas se comunicam com seus clientes através de automações inteligentes powered by I.A.</p>
+        <div class="hero-buttons">
+            <a href="mailto:isaquesilva220@gmail.com" class="btn-primary">Começar agora →</a>
+            <a href="#servicos" class="btn-secondary">Nossos serviços</a>
+        </div>
+        <div class="stats">
+            <div class="stat">
+                <h3>24/7</h3>
+                <p>Atendimento contínuo</p>
+            </div>
+            <div class="stat">
+                <h3>90%</h3>
+                <p>Redução de tempo</p>
+            </div>
+            <div class="stat">
+                <h3>I.A</h3>
+                <p>Tecnologia de ponta</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicos">
+        <div class="section-title">
+            <h2>Nossos Serviços</h2>
+            <p>Soluções completas de automação inteligente para transformar seu negócio</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🤖</div>
+                <h3>Chatbots Inteligentes</h3>
+                <p>Atendimento automatizado 24 horas por dia, 7 dias por semana, com respostas personalizadas usando inteligência artificial.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💬</div>
+                <h3>Automação WhatsApp</h3>
+                <p>Integração completa com WhatsApp Business para atendimento automatizado, envio de mensagens e gestão de conversas.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Análise de Dados</h3>
+                <p>Dashboards e relatórios inteligentes para acompanhar o desempenho do seu atendimento em tempo real.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Fluxos Automatizados</h3>
+                <p>Criação de fluxos de atendimento personalizados que guiam seus clientes até a solução ideal.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔗</div>
+                <h3>Integrações</h3>
+                <p>Conectamos sua automação com CRMs, ERPs, planilhas e outras ferramentas que você já utiliza.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛡️</div>
+                <h3>Suporte Dedicado</h3>
+                <p>Acompanhamento contínuo e suporte técnico para garantir que sua automação funcione perfeitamente.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="sobre">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Por que escolher a <span>Venturi AI</span>?</h2>
+                <p>Somos especialistas em criar soluções de automação que realmente fazem diferença no dia a dia do seu negócio. Nossa tecnologia de I.A. permite atendimentos mais rápidos, precisos e personalizados.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="check">✓</div>
+                        Tecnologia de I.A. de última geração
+                    </div>
+                    <div class="about-feature">
+                        <div class="check">✓</div>
+                        Atendimento automatizado 24/7
+                    </div>
+                    <div class="about-feature">
+                        <div class="check">✓</div>
+                        Integração com WhatsApp Business
+                    </div>
+                    <div class="about-feature">
+                        <div class="check">✓</div>
+                        Redução de custos operacionais
+                    </div>
+                    <div class="about-feature">
+                        <div class="check">✓</div>
+                        Setup rápido e sem complicação
+                    </div>
+                    <div class="about-feature">
+                        <div class="check">✓</div>
+                        Conformidade com LGPD
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual">
+                <div class="big-icon">🚀</div>
+                <p>Impulsionando negócios com I.A.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contato">
+        <div class="contact-box">
+            <h2>Entre em contato</h2>
+            <p>Pronto para transformar seu atendimento? Fale com nossa equipe.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span> isaquesilva220@gmail.com
+                </div>
+                <div class="contact-item">
+                    <span>🌐</span> aiventuri.com.br
+                </div>
+            </div>
+            <a href="mailto:isaquesilva220@gmail.com" class="contact-btn">Enviar mensagem →</a>
+        </div>
+    </section>
+
+    <!-- Privacy Section -->
+    <section class="privacy" id="privacidade">
+        <div class="section-title" style="margin-bottom: 40px;">
+            <h2>Política de Privacidade</h2>
+        </div>
+        <h3>1. Coleta de Dados</h3>
+        <p>A Venturi AI coleta informações necessárias para a prestação de seus serviços de automação, incluindo dados de contato fornecidos voluntariamente pelos usuários, como nome, e-mail e número de telefone. Também podemos coletar dados de uso dos nossos serviços para fins de melhoria contínua.</p>
+
+        <h3>2. Uso das Informações</h3>
+        <p>As informações coletadas são utilizadas exclusivamente para: prestação e melhoria dos serviços contratados; comunicação com clientes sobre atualizações e suporte; cumprimento de obrigações legais e regulatórias. Não compartilhamos dados pessoais com terceiros sem consentimento expresso do titular.</p>
+
+        <h3>3. Proteção de Dados</h3>
+        <p>Adotamos medidas técnicas e organizacionais adequadas para proteger os dados pessoais contra acesso não autorizado, perda, alteração ou destruição. Nossos sistemas seguem as melhores práticas de segurança da informação.</p>
+
+        <h3>4. Direitos do Usuário (LGPD)</h3>
+        <p>Em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018), garantimos aos titulares o direito de: acessar seus dados pessoais; solicitar correção de dados incompletos ou desatualizados; solicitar a exclusão de dados pessoais; revogar consentimento a qualquer momento. Para exercer seus direitos, entre em contato através do e-mail: isaquesilva220@gmail.com</p>
+
+        <h3>5. Cookies e Tecnologias</h3>
+        <p>Nosso site pode utilizar cookies e tecnologias similares para melhorar a experiência do usuário. O usuário pode configurar seu navegador para recusar cookies, embora isso possa afetar algumas funcionalidades.</p>
+
+        <h3>6. Alterações nesta Política</h3>
+        <p>Esta política pode ser atualizada periodicamente. Recomendamos a revisão regular desta página para estar ciente de quaisquer mudanças. Última atualização: Março de 2026.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <span class="logo-footer">Venturi AI</span>
+        <p>© 2026 Venturi AI - Todos os direitos reservados. | CNPJ em processo de registro</p>
+    </footer>
+
+</body>
+</html>
