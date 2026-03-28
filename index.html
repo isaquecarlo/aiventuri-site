@@ -1255,6 +1255,8 @@ footer {
     flex-direction: column !important;
     gap: 28px;
     margin-top: 28px;
+    overflow-x: hidden !important;
+    max-width: 100% !important;
   }
   .feat-grid { grid-template-columns: 1fr; gap: 12px; }
   .glass-card { padding: 22px 18px; }
@@ -1321,6 +1323,8 @@ footer {
     flex-direction: column !important;
     gap: 28px;
     margin-top: 28px;
+    overflow-x: hidden !important;
+    max-width: 100% !important;
   }
   .timeline { padding-left: 44px; }
   .timeline-num { width: 34px; height: 34px; left: -46px; font-size: 12px; }
@@ -2853,6 +2857,11 @@ window.addEventListener('load', function() { setTimeout(forceRevealAll, 200); })
   // Also on first touch/click — covers strict autoplay policies
   document.addEventListener('touchstart', tryPlay, { once: true, passive: true });
   document.addEventListener('click',      tryPlay, { once: true });
+  // Restart if video stops (some mobile browsers pause on tab switch)
+  vid.addEventListener('ended', tryPlay);
+  vid.addEventListener('pause', function() {
+    if (!document.hidden) tryPlay();
+  });
 })();
 
 /* ══════════════════════════════════════════
