@@ -1123,7 +1123,7 @@ footer {
   }
   .cp-1, .cp-2, .cp-3, .cp-4,
   .rp-1, .rp-2, .rp-3, .rp-4 {
-    position: static !important;
+    position: relative !important;
     transform: none !important;
     width: 100% !important;
     height: auto !important;
@@ -1298,7 +1298,7 @@ footer {
   }
   .cp-1, .cp-2, .cp-3, .cp-4,
   .rp-1, .rp-2, .rp-3, .rp-4 {
-    position: static !important;
+    position: relative !important;
     transform: none !important;
     width: 100% !important;
     height: auto !important;
@@ -1397,6 +1397,32 @@ footer {
 
   /* ── TWO COL ── */
   .two-col { grid-template-columns: 1fr; gap: 14px; margin-top: 20px; }
+
+  /* ── HERO ANIMATIONS — force visible on mobile (prevents opacity:0 lock) ── */
+  .hero-eyebrow,
+  .hero h1,
+  .hero h1 .h1-leo,
+  .hero h1 .h1-accent,
+  .hero-tagline,
+  .hero-stats,
+  .hero-ctas,
+  .hero-visual {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-fill-mode: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  /* Force all reveal classes visible immediately on mobile */
+  .reveal, .reveal-left, .reveal-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .timeline-step {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* ══════════════════════════════════════════
@@ -1452,17 +1478,27 @@ footer {
 <!-- Navigation -->
 <nav id="mainNav">
   <a href="#hero" class="nav-logo">
-    <img class="nav-logo-img" src="logo_fundo_preto_3d.jpg (a do fundo preto, lado esquerdo) - Editado.png" alt="Venture AI">
+    <img class="nav-logo-img" src="logo_fundo_preto_3d.png" alt="Venture AI">
     <div class="nav-logo-text"><span>Venture</span> AI</div>
   </a>
   <ul class="nav-links">
-    <li><a href="#o-que-e">O Leo</a></li>
-    <li><a href="#candidato">Candidato</a></li>
-    <li><a href="#recrutador">Recrutador</a></li>
-    <li><a href="#plataformas">Plataformas</a></li>
-    <li><a href="#arquitetura">Arquitetura</a></li>
+    <li><a href="#o-que-e" data-i18n="nav_oleo">O Leo</a></li>
+    <li><a href="#candidato" data-i18n="nav_candidato">Candidato</a></li>
+    <li><a href="#recrutador" data-i18n="nav_recrutador">Recrutador</a></li>
+    <li><a href="#plataformas" data-i18n="nav_plataformas">Plataformas</a></li>
+    <li><a href="#arquitetura" data-i18n="nav_arquitetura">Arquitetura</a></li>
   </ul>
-  <a href="https://wa.me/5511947408207?text=Oi%2C%20me%20interessei%20pelo%20Leo%2C%20seu%20agente%20de%20recrutamento%20e%20sele%C3%A7%C3%A3o.%20Gostaria%20de%20saber%20mais%20sobre%20o%20produto%20para%20uma%20poss%C3%ADvel%20assinatura." target="_blank" class="nav-cta">Falar com a Venture AI</a>
+
+  <!-- Language selector -->
+  <div class="lang-selector" id="langSelector">
+    <button class="lang-btn" id="langBtn" aria-label="Idioma / Language">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <span id="langCurrent">PT</span>
+    </button>
+    <div class="lang-dropdown" id="langDropdown"></div>
+  </div>
+
+  <a href="https://wa.me/5511947408207?text=Oi%2C%20me%20interessei%20pelo%20Leo%2C%20seu%20agente%20de%20recrutamento%20e%20sele%C3%A7%C3%A3o.%20Gostaria%20de%20saber%20mais%20sobre%20o%20produto%20para%20uma%20poss%C3%ADvel%20assinatura." target="_blank" class="nav-cta" data-i18n="nav_cta">Falar com a Venture AI</a>
 </nav>
 
 <div class="wrap">
@@ -1474,7 +1510,7 @@ footer {
   <canvas id="hero-canvas"></canvas>
 
   <img class="hero-bg-logo"
-    src="logo_3d_flutuando.jpg (a com rede dourada flutuando) - Editado.png"
+    src="logo_3d_flutuando.png"
     alt="" aria-hidden="true">
 
   <div class="container" style="position:relative;z-index:2;width:100%">
@@ -1484,46 +1520,46 @@ footer {
       <div>
         <div class="hero-eyebrow">
           <span class="hero-eyebrow-dot"></span>
-          Venture AI &nbsp;·&nbsp; Inteligência Artificial
+          <span data-i18n="hero_eyebrow">Venture AI &nbsp;·&nbsp; Inteligência Artificial</span>
         </div>
 
         <h1>
-          <span class="h1-leo">Leo</span>
-          <span class="h1-accent">Recrutamento</span>
-          <span class="h1-leo" style="font-size:0.7em;font-weight:700">Reinventado.</span>
+          <span class="h1-leo" data-i18n="hero_h1_1">Leo</span>
+          <span class="h1-accent" data-i18n="hero_h1_2">Recrutamento</span>
+          <span class="h1-leo" style="font-size:0.7em;font-weight:700" data-i18n="hero_h1_3">Reinventado.</span>
         </h1>
 
-        <p class="hero-tagline">
+        <p class="hero-tagline" data-i18n-html="hero_tagline">
           O primeiro <strong>Agente de Recrutamento e Seleção com IA</strong> que parece humano de verdade — porque ele pensa, reage, entrevista e decide. Pelo WhatsApp e Telegram. Sem site, sem formulário, sem robozão chato.
         </p>
 
         <div class="hero-stats">
           <div class="stat-item">
             <div class="stat-value" data-count="82">0</div>
-            <div class="stat-label">nós de automação</div>
+            <div class="stat-label" data-i18n="stat_nos">nós de automação</div>
           </div>
           <div class="stat-item">
             <div class="stat-value" data-count="7">0</div>
-            <div class="stat-label">workflows ativos</div>
+            <div class="stat-label" data-i18n="stat_workflows">workflows ativos</div>
           </div>
           <div class="stat-item">
             <div class="stat-value" data-text="24/7">0</div>
-            <div class="stat-label">disponibilidade</div>
+            <div class="stat-label" data-i18n="stat_disp">disponibilidade</div>
           </div>
           <div class="stat-item">
             <div class="stat-value" data-text="∞">0</div>
-            <div class="stat-label">candidatos simultâneos</div>
+            <div class="stat-label" data-i18n="stat_candidatos">candidatos simultâneos</div>
           </div>
         </div>
 
         <div class="hero-ctas">
           <a href="https://wa.me/5511920154863?text=RECRUTADOR" target="_blank" class="btn-primary">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Testar no WhatsApp
+            <span data-i18n="btn_wa">Testar no WhatsApp</span>
           </a>
           <a href="https://t.me/LeoRecrutador_bot?start=RECRUTADOR" target="_blank" class="btn-secondary">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-            Testar no Telegram
+            <span data-i18n="btn_tg">Testar no Telegram</span>
           </a>
         </div>
       </div>
@@ -1532,7 +1568,7 @@ footer {
       <div class="hero-visual">
         <div class="hero-video-wrap">
           <video autoplay muted loop playsinline>
-            <source src="leo_video_animado.mp4.mp4" type="video/mp4">
+            <source src="leo_video_animado.mp4" type="video/mp4">
           </video>
           <div class="hero-video-vignette"></div>
           <div class="hero-video-edge-top"></div>
@@ -1549,7 +1585,7 @@ footer {
           </div>
         </div>
         <img class="hero-float-logo"
-          src="logo_fundo_preto_3d.jpg (a do fundo preto, lado esquerdo) - Editado.png"
+          src="logo_fundo_preto_3d.png"
           alt="">
       </div>
 
@@ -1565,9 +1601,9 @@ footer {
 <section id="problema">
   <div class="container">
     <div class="reveal">
-      <div class="section-tag">O Problema</div>
-      <h2 class="section-title">O recrutamento tradicional<br>está <span class="red">quebrado.</span></h2>
-      <p class="section-desc">A experiência do candidato é frustrante. O RH humano não escala. E os melhores talentos desistem antes de serem vistos.</p>
+      <div class="section-tag" data-i18n="tag_problema">O Problema</div>
+      <h2 class="section-title" data-i18n-html="title_problema">O recrutamento tradicional<br>está <span class="red">quebrado.</span></h2>
+      <p class="section-desc" data-i18n="desc_problema">A experiência do candidato é frustrante. O RH humano não escala. E os melhores talentos desistem antes de serem vistos.</p>
     </div>
 
     <div class="problem-grid" style="margin-top:64px">
@@ -1620,7 +1656,7 @@ footer {
       <div class="leo-photo-wrap reveal-left">
         <div class="leo-photo-glow"></div>
         <div class="leo-photo-frame">
-          <img src="leo_foto_principal.jpg (a melhor das duas) - Editado.png" alt="Leo — Agente de Recrutamento e Seleção da Venture AI">
+          <img src="leo_foto_principal.png" alt="Leo — Agente de Recrutamento e Seleção da Venture AI">
           <div class="leo-photo-border"></div>
         </div>
         <div class="leo-corner tl"></div>
@@ -1638,9 +1674,9 @@ footer {
 
       <!-- CONTENT -->
       <div class="reveal-right">
-        <div class="section-tag">Conheça o Leo</div>
-        <h2 class="section-title">26 anos.<br>Paulistano.<br><span>Disponível 24/7.</span></h2>
-        <p class="section-desc">O Leo tem personalidade real — é carismático, bem-humorado, empático e focado. Fala como gente de verdade pelo WhatsApp, usa as gírias certas na hora certa e sabe exatamente quando o candidato está brincando ou sendo sério.</p>
+        <div class="section-tag" data-i18n="tag_oleo">Conheça o Leo</div>
+        <h2 class="section-title" data-i18n-html="title_oleo">26 anos.<br>Paulistano.<br><span>Disponível 24/7.</span></h2>
+        <p class="section-desc" data-i18n="desc_oleo">O Leo tem personalidade real — é carismático, bem-humorado, empático e focado. Fala como gente de verdade pelo WhatsApp, usa as gírias certas na hora certa e sabe exatamente quando o candidato está brincando ou sendo sério.</p>
 
         <div class="leo-quote">
           <p>"Se alguém não te disser que o Leo é uma automação com IA, <strong>você não vai perceber.</strong> Ele literalmente conversa contigo."</p>
@@ -1699,16 +1735,16 @@ footer {
 <section id="candidato">
   <div class="container">
     <div class="reveal">
-      <div class="section-tag">Módulo Candidato</div>
-      <h2 class="section-title">A entrevista que ninguém percebe<br>ser uma <span>entrevista.</span></h2>
-      <p class="section-desc">Processo completo de qualificação, 100% conversacional, pelo app que todo mundo já tem.</p>
+      <div class="section-tag" data-i18n="tag_candidato">Módulo Candidato</div>
+      <h2 class="section-title" data-i18n-html="title_candidato">A entrevista que ninguém percebe<br>ser uma <span>entrevista.</span></h2>
+      <p class="section-desc" data-i18n="desc_candidato">Processo completo de qualificação, 100% conversacional, pelo app que todo mundo já tem.</p>
     </div>
 
     <div class="candidate-layout">
       <!-- Chat prints LEFT -->
       <div class="chat-constellation reveal-left">
         <div class="chat-print cp-1">
-          <img src="chat_recrutador/chat_candidato.jpeg" alt="Conversa candidato — saudação inicial">
+          <img src="chat_candidato/chat_candidato.jpeg" alt="Conversa candidato — saudação inicial">
           <div class="vignette"></div>
         </div>
         <div class="chat-print cp-2">
@@ -1796,9 +1832,9 @@ footer {
 <section id="recrutador">
   <div class="container">
     <div class="reveal">
-      <div class="section-tag">Módulo Recrutador</div>
-      <h2 class="section-title">Gestão completa.<br><span>Sem esforço manual.</span></h2>
-      <p class="section-desc">O recrutador fala com o Leo pelo WhatsApp como falaria com um colega. O Leo cuida de todo o resto.</p>
+      <div class="section-tag" data-i18n="tag_recrutador">Módulo Recrutador</div>
+      <h2 class="section-title" data-i18n-html="title_recrutador">Gestão completa.<br><span>Sem esforço manual.</span></h2>
+      <p class="section-desc" data-i18n="desc_recrutador">O recrutador fala com o Leo pelo WhatsApp como falaria com um colega. O Leo cuida de todo o resto.</p>
     </div>
 
     <div class="recruiter-layout">
@@ -1895,8 +1931,8 @@ footer {
 <section id="diferenciais">
   <div class="container">
     <div class="reveal">
-      <div class="section-tag">Diferenciais Únicos</div>
-      <h2 class="section-title">O que nenhuma outra<br>solução <span>tem.</span></h2>
+      <div class="section-tag" data-i18n="tag_diferenciais">Diferenciais Únicos</div>
+      <h2 class="section-title" data-i18n-html="title_diferenciais">O que nenhuma outra<br>solução <span>tem.</span></h2>
     </div>
 
     <div class="diff-grid">
@@ -1935,9 +1971,9 @@ footer {
 <section id="comparativo">
   <div class="container">
     <div class="reveal">
-      <div class="section-tag">Comparativo</div>
-      <h2 class="section-title">Leo vs. <span>O mercado.</span></h2>
-      <p class="section-desc">Coloque qualquer solução ao lado do Leo. A diferença fala por si mesma.</p>
+      <div class="section-tag" data-i18n="tag_comparativo">Comparativo</div>
+      <h2 class="section-title" data-i18n-html="title_comparativo">Leo vs. <span>O mercado.</span></h2>
+      <p class="section-desc" data-i18n="desc_comparativo">Coloque qualquer solução ao lado do Leo. A diferença fala por si mesma.</p>
     </div>
 
     <div class="comp-wrap reveal">
@@ -1970,18 +2006,18 @@ footer {
 <section id="plataformas">
   <div class="container">
     <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto">
-      <div class="section-tag">Plataformas</div>
-      <h2 class="section-title">Onde o <span>Leo</span> vive.</h2>
-      <p class="section-desc">WhatsApp e Telegram são os dois apps de mensagem mais instalados no Brasil. Não precisa convencer ninguém a baixar nada.</p>
+      <div class="section-tag" data-i18n="tag_plataformas">Plataformas</div>
+      <h2 class="section-title" data-i18n-html="title_plataformas">Onde o <span>Leo</span> vive.</h2>
+      <p class="section-desc" data-i18n="desc_plataformas">WhatsApp e Telegram são os dois apps de mensagem mais instalados no Brasil. Não precisa convencer ninguém a baixar nada.</p>
     </div>
 
     <div class="platforms-grid">
       <div class="platform-card platform-card-wa reveal reveal-d1">
         <img class="platform-logo platform-logo-wa"
-          src="logo_whatsapp - Editado.png"
+          src="logo_whatsapp.png"
           alt="WhatsApp">
         <img class="platform-profile"
-          src="perfil_leo_whatsapp - Editado.png"
+          src="perfil_leo_whatsapp.png"
           alt="Leo no WhatsApp">
         <div class="platform-name">WhatsApp</div>
         <div class="platform-desc">Integrado via WhatsApp Business API. O candidato clica no link da vaga e o app abre com o código já digitado. Só apertar enviar. O app mais usado do Brasil.</div>
@@ -1993,10 +2029,10 @@ footer {
 
       <div class="platform-card platform-card-tg reveal reveal-d2">
         <img class="platform-logo platform-logo-tg"
-          src="logo_telegram - Editado.png"
+          src="logo_telegram.png"
           alt="Telegram">
         <img class="platform-profile"
-          src="perfil_leo_whatsapp - Editado.png"
+          src="perfil_leo_whatsapp.png"
           alt="Leo no Telegram">
         <div class="platform-name">Telegram</div>
         <div class="platform-desc">Integrado via Telegram Bot API. Mesmo fluxo completo — entrevista, ranking, devolutiva — com link /start configurado por vaga. Velocidade e recursos avançados.</div>
@@ -2021,9 +2057,9 @@ footer {
 <section id="arquitetura">
   <div class="container">
     <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto 60px">
-      <div class="section-tag">Arquitetura Técnica</div>
-      <h2 class="section-title">Construído para escalar<br>sem <span>limites.</span></h2>
-      <p class="section-desc">Um sistema de automação de nível enterprise, rodando 24 horas em servidor dedicado, com retry automático e redundância.</p>
+      <div class="section-tag" data-i18n="tag_arquitetura">Arquitetura Técnica</div>
+      <h2 class="section-title" data-i18n-html="title_arquitetura">Construído para escalar<br>sem <span>limites.</span></h2>
+      <p class="section-desc" data-i18n="desc_arquitetura">Um sistema de automação de nível enterprise, rodando 24 horas em servidor dedicado, com retry automático e redundância.</p>
     </div>
 
     <!-- Logo 3D Ken Burns -->
@@ -2035,7 +2071,7 @@ footer {
         <div class="arch-logo-orbit2-dot"></div>
       </div>
       <img class="arch-logo"
-        src="logo_3d_flutuando.jpg (a com rede dourada flutuando) - Editado.png"
+        src="logo_3d_flutuando.png"
         alt="Venture AI — Arquitetura">
     </div>
 
@@ -2122,8 +2158,8 @@ footer {
 <section id="ficha-tecnica">
   <div class="container">
     <div class="reveal">
-      <div class="section-tag">Ficha Técnica</div>
-      <h2 class="section-title">Especificações<br>do <span>sistema.</span></h2>
+      <div class="section-tag" data-i18n="tag_ficha">Ficha Técnica</div>
+      <h2 class="section-title" data-i18n-html="title_ficha">Especificações<br>do <span>sistema.</span></h2>
     </div>
 
     <div class="specs-grid">
@@ -2172,18 +2208,18 @@ footer {
   <div class="container">
     <div class="cta-box">
       <img class="cta-box-bg-logo"
-        src="logo_3d_flutuando.jpg (a com rede dourada flutuando) - Editado.png"
+        src="logo_3d_flutuando.png"
         alt="" aria-hidden="true">
 
       <div class="cta-grid">
         <div class="cta-leo-photo reveal-left">
-          <img src="leo_foto_principal.jpg (a melhor das duas) - Editado.png" alt="Leo">
+          <img src="leo_foto_principal.png" alt="Leo">
         </div>
 
         <div class="cta-content reveal">
-          <div class="section-tag" style="justify-content:center">O Futuro do RH</div>
-          <h2 class="cta-title">Seu próximo processo seletivo<br><span>começa aqui.</span></h2>
-          <p class="cta-sub">O Leo não é um produto do futuro. É um Agente de Recrutamento e Seleção em produção, testado, refinado e pronto para trabalhar pela sua empresa — hoje, agora, sem parar.</p>
+          <div class="section-tag" style="justify-content:center" data-i18n="tag_cta">O Futuro do RH</div>
+          <h2 class="cta-title" data-i18n-html="title_cta">Seu próximo processo seletivo<br><span>começa aqui.</span></h2>
+          <p class="cta-sub" data-i18n="desc_cta">O Leo não é um produto do futuro. É um Agente de Recrutamento e Seleção em produção, testado, refinado e pronto para trabalhar pela sua empresa — hoje, agora, sem parar.</p>
 
           <div class="cta-buttons">
             <a href="https://wa.me/5511947408207?text=Oi%2C%20me%20interessei%20pelo%20Leo%2C%20seu%20agente%20de%20recrutamento%20e%20sele%C3%A7%C3%A3o.%20Gostaria%20de%20saber%20mais%20sobre%20o%20produto%20para%20uma%20poss%C3%ADvel%20assinatura." target="_blank" class="btn-primary" style="font-size:16px;padding:18px 44px">
@@ -2204,9 +2240,69 @@ footer {
         </div>
 
         <div class="cta-float-logo reveal-right">
-          <img src="logo_fundo_claro_flat.jpg (a do fundo claro, centralizada) - Editado.png" alt="Venture AI">
+          <img src="logo_fundo_claro_flat.png" alt="Venture AI">
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════
+     PLANOS E PREÇOS
+════════════════════════════════════════ -->
+<section id="planos" class="pricing-section">
+  <div class="container">
+    <div class="reveal" style="max-width:700px;margin:0 auto">
+      <div class="section-tag" data-i18n="tag_planos">Planos e Preços</div>
+      <h2 class="section-title" data-i18n-html="title_planos">Comece com <span>14 dias grátis.</span></h2>
+      <p class="section-desc" data-i18n="desc_planos">Sem cartão de crédito para testar. Cancele quando quiser. Escolha o plano que melhor se encaixa no ritmo da sua operação.</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- TRIMESTRAL -->
+      <div class="pricing-card pricing-card-default reveal reveal-d2">
+        <div class="pricing-plan-name" data-i18n="plan_trimestral">Trimestral</div>
+        <div class="pricing-price-main"><span>R$</span>397</div>
+        <div class="pricing-price-period">por mês</div>
+        <div class="pricing-price-billed">Cobrado R$1.191 a cada 3 meses</div>
+        <div class="pricing-free-badge" data-i18n="free_trial">14 dias grátis</div>
+        <div class="pricing-divider"></div>
+        <a id="btn-trimestral" href="https://buy.stripe.com/4gM14ocpVa0Q1dT9ZA0gw01" target="_blank" class="pricing-btn pricing-btn-default">
+          <span data-i18n="btn_start">Começar grátis</span>
+        </a>
+      </div>
+
+      <!-- MENSAL — MAIS POPULAR -->
+      <div class="pricing-card pricing-card-popular reveal reveal-d1">
+        <div class="pricing-badge-popular" data-i18n="badge_popular">Mais Popular</div>
+        <div class="pricing-plan-name" data-i18n="plan_mensal">Mensal</div>
+        <div class="pricing-price-main"><span>R$</span>497</div>
+        <div class="pricing-price-period">por mês</div>
+        <div class="pricing-price-billed">&nbsp;</div>
+        <div class="pricing-free-badge" data-i18n="free_trial">14 dias grátis</div>
+        <div class="pricing-divider"></div>
+        <a id="btn-mensal" href="https://buy.stripe.com/5kQaEYdtZeh63m18Vw0gw00" target="_blank" class="pricing-btn pricing-btn-popular">
+          <span data-i18n="btn_start">Começar grátis</span>
+        </a>
+      </div>
+
+      <!-- ANUAL — MELHOR VALOR -->
+      <div class="pricing-card pricing-card-annual reveal reveal-d3">
+        <div class="pricing-badge-value" data-i18n="badge_value">Melhor Valor</div>
+        <div class="pricing-plan-name" data-i18n="plan_anual">Anual</div>
+        <div class="pricing-price-main"><span>R$</span>297</div>
+        <div class="pricing-price-period">por mês</div>
+        <div class="pricing-price-billed">Cobrado R$3.564 por ano</div>
+        <div class="pricing-free-badge" data-i18n="free_trial">14 dias grátis</div>
+        <div class="pricing-divider"></div>
+        <a id="btn-anual" href="https://buy.stripe.com/9B628s0Hdeh61dT3Bc0gw02" target="_blank" class="pricing-btn pricing-btn-annual">
+          <span data-i18n="btn_start">Começar grátis</span>
+        </a>
+      </div>
+
     </div>
   </div>
 </section>
@@ -2218,10 +2314,10 @@ footer {
   <div class="container">
     <div class="footer-inner">
       <div class="footer-logo">
-        <img src="logo_fundo_preto_3d.jpg (a do fundo preto, lado esquerdo) - Editado.png" alt="Venture AI">
+        <img src="logo_fundo_preto_3d.png" alt="Venture AI">
         <div class="footer-logo-text"><span>Venture</span> AI</div>
       </div>
-      <div class="footer-tagline">Leo — Agente de Recrutamento e Seleção com Inteligência Artificial</div>
+      <div class="footer-tagline" data-i18n="footer_tagline">Leo — Agente de Recrutamento e Seleção com Inteligência Artificial</div>
       <div class="footer-info">
         <span>ISAQUE CARLOS DA SILVA</span>
         <span class="footer-sep">·</span>
@@ -2334,6 +2430,7 @@ footer {
 ══════════════════════════════════════════ */
 (function() {
   try {
+  if (window.innerWidth < 768) return; // skip heavy Three.js on mobile
   const canvas   = document.getElementById('hero-canvas');
   if (!canvas || typeof THREE === 'undefined') return;
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
@@ -2460,6 +2557,164 @@ footer {
   } catch(e) { console.warn('Three.js init failed:', e); }
 })();
 
+</script>
+<style>
+/* ══════════════════════════════════════════
+   LANGUAGE SELECTOR
+══════════════════════════════════════════ */
+.lang-selector {
+  position: relative; display: flex; align-items: center;
+}
+.lang-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(200,169,106,0.05); border: 1px solid rgba(200,169,106,0.15);
+  border-radius: 100px; padding: 7px 14px; cursor: pointer;
+  font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 500;
+  color: var(--gray); transition: all 0.3s; white-space: nowrap;
+  position: relative; z-index: 1001;
+}
+.lang-btn:hover { border-color: var(--gold); color: var(--white); }
+.lang-btn svg { flex-shrink: 0; }
+.lang-dropdown {
+  position: absolute; top: calc(100% + 8px); right: 0;
+  background: rgba(13,19,35,0.97); backdrop-filter: blur(24px);
+  border: 1px solid rgba(200,169,106,0.15); border-radius: 16px;
+  padding: 8px; min-width: 220px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+  display: none; z-index: 2000;
+  max-height: 340px; overflow-y: auto;
+}
+.lang-dropdown.open { display: block; }
+.lang-opt {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px; border-radius: 10px; cursor: pointer;
+  font-size: 13px; color: var(--gray); transition: all 0.2s;
+}
+.lang-opt:hover { background: rgba(200,169,106,0.08); color: var(--white); }
+.lang-opt.active { color: var(--gold); background: rgba(200,169,106,0.08); }
+.lang-opt-flag { font-size: 16px; flex-shrink: 0; }
+.lang-opt-name { flex: 1; }
+.lang-dropdown::-webkit-scrollbar { width: 4px; }
+.lang-dropdown::-webkit-scrollbar-track { background: transparent; }
+.lang-dropdown::-webkit-scrollbar-thumb { background: rgba(200,169,106,0.3); border-radius: 2px; }
+@media (max-width: 768px) {
+  .lang-btn span { display: none; }
+  .lang-btn { padding: 7px 10px; }
+  .lang-dropdown { right: -20px; min-width: 200px; }
+}
+
+/* ══════════════════════════════════════════
+   PRICING SECTION
+══════════════════════════════════════════ */
+.pricing-section { text-align: center; }
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-top: 64px; align-items: start;
+}
+.pricing-card {
+  background: rgba(13,19,35,0.85); backdrop-filter: blur(20px);
+  border-radius: 24px; padding: 44px 36px 40px;
+  position: relative; overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+}
+.pricing-card-default { border: 1px solid rgba(200,169,106,0.12); }
+.pricing-card-popular {
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 60px rgba(200,169,106,0.18), 0 24px 80px rgba(0,0,0,0.4);
+  transform: translateY(-12px);
+}
+.pricing-card-annual  { border: 1px solid rgba(37,99,235,0.25); }
+.pricing-card:hover { transform: translateY(-6px); }
+.pricing-card-popular:hover { transform: translateY(-18px); }
+.pricing-badge-popular {
+  position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+  background: var(--gold); color: var(--bg);
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; padding: 5px 18px; border-radius: 0 0 12px 12px;
+}
+.pricing-badge-value {
+  position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+  background: var(--sap2); color: #fff;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; padding: 5px 18px; border-radius: 0 0 12px 12px;
+}
+.pricing-plan-name {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gray); margin-top: 28px; margin-bottom: 16px;
+}
+.pricing-card-popular .pricing-plan-name { color: var(--gold); }
+.pricing-card-annual  .pricing-plan-name { color: var(--sap3); }
+.pricing-price-main {
+  font-size: 52px; font-weight: 800; line-height: 1; letter-spacing: -0.03em;
+  color: var(--white); margin-bottom: 4px;
+}
+.pricing-price-main span { font-size: 22px; font-weight: 400; color: var(--gray); vertical-align: top; margin-top: 10px; display: inline-block; }
+.pricing-price-period {
+  font-size: 13px; font-weight: 300; color: var(--gray); margin-bottom: 4px;
+}
+.pricing-price-billed {
+  font-size: 12px; font-weight: 300; color: var(--gray2);
+  line-height: 1.5; margin-bottom: 20px; min-height: 36px;
+}
+.pricing-free-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25);
+  border-radius: 100px; padding: 5px 14px;
+  font-size: 12px; font-weight: 600; color: #4ADE80;
+  margin-bottom: 28px;
+}
+.pricing-free-badge::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: #22C55E; box-shadow: 0 0 6px rgba(34,197,94,0.8);
+}
+.pricing-divider {
+  width: 100%; height: 1px; margin-bottom: 28px;
+  background: linear-gradient(90deg, transparent, rgba(200,169,106,0.2), transparent);
+}
+.pricing-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 100%; font-size: 14px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; text-decoration: none;
+  border-radius: 100px; padding: 16px 24px;
+  transition: all 0.3s; cursor: pointer; border: none;
+}
+.pricing-btn-popular {
+  background: var(--gold); color: var(--bg);
+  box-shadow: 0 8px 30px rgba(200,169,106,0.35);
+}
+.pricing-btn-popular:hover {
+  background: var(--gold3); box-shadow: 0 12px 40px rgba(200,169,106,0.5);
+  transform: translateY(-2px);
+}
+.pricing-btn-default {
+  background: rgba(200,169,106,0.08); color: var(--gold);
+  border: 1px solid rgba(200,169,106,0.25);
+}
+.pricing-btn-default:hover {
+  background: rgba(200,169,106,0.15); border-color: var(--gold);
+}
+.pricing-btn-annual {
+  background: rgba(37,99,235,0.12); color: var(--sap3);
+  border: 1px solid rgba(37,99,235,0.3);
+}
+.pricing-btn-annual:hover {
+  background: rgba(37,99,235,0.22); box-shadow: 0 0 30px rgba(37,99,235,0.2);
+  transform: translateY(-2px);
+}
+@media (max-width: 1024px) {
+  .pricing-grid { grid-template-columns: 1fr; gap: 20px; max-width: 480px; margin: 40px auto 0; }
+  .pricing-card-popular { transform: none; }
+  .pricing-card-popular:hover { transform: translateY(-6px); }
+}
+@media (max-width: 768px) {
+  .pricing-grid { max-width: 100%; gap: 16px; }
+  .pricing-card { padding: 36px 24px 32px; }
+  .pricing-price-main { font-size: 42px; }
+}
+</style>
+<script>
 /* ══════════════════════════════════════════
    SCROLL REVEAL — threshold 0 = fires as soon as 1px is visible
 ══════════════════════════════════════════ */
@@ -2542,25 +2797,33 @@ function triggerCounters(container) {
   });
 }
 
-// Also check visible counters on load
-document.querySelectorAll('[data-count]').forEach(el => {
-  const rect = el.getBoundingClientRect();
-  if (rect.top < window.innerHeight) animateCounter(el, parseInt(el.dataset.count), false);
-});
-document.querySelectorAll('[data-text]').forEach(el => {
-  const rect = el.getBoundingClientRect();
-  if (rect.top < window.innerHeight) animateCounter(el, null, true);
-});
-
-// Fallback: força todos os contadores após 1s, independente de interseção
-setTimeout(function() {
+// Force animate all counters + reveals on window load (catches any timing issue)
+function forceRevealAll() {
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(function(el) {
+    el.classList.add('visible');
+    triggerCounters(el);
+  });
+  document.querySelectorAll('.timeline-step').forEach(function(el) { el.classList.add('visible'); });
   document.querySelectorAll('[data-count]').forEach(function(el) {
     if (!el.dataset.animated) animateCounter(el, parseInt(el.dataset.count), false);
   });
   document.querySelectorAll('[data-text]').forEach(function(el) {
     if (!el.dataset.animated) animateCounter(el, null, true);
   });
-}, 1000);
+}
+// Run immediately for above-fold counters
+document.querySelectorAll('[data-count]').forEach(function(el) {
+  var rect = el.getBoundingClientRect();
+  if (rect.top < (window.innerHeight || 900)) animateCounter(el, parseInt(el.dataset.count), false);
+});
+document.querySelectorAll('[data-text]').forEach(function(el) {
+  var rect = el.getBoundingClientRect();
+  if (rect.top < (window.innerHeight || 900)) animateCounter(el, null, true);
+});
+// Multiple fallback timers
+setTimeout(forceRevealAll, 800);
+setTimeout(forceRevealAll, 2000);
+window.addEventListener('load', function() { setTimeout(forceRevealAll, 200); });
 
 /* ══════════════════════════════════════════
    VIDEO FORCE PLAY — mobile autoplay fix
@@ -2684,6 +2947,85 @@ setTimeout(function() {
     r.style.transform = 'translateX(-20px)';
   });
   if (rows.length) obs.observe(rows[0]);
+})();
+
+/* ══════════════════════════════════════════
+   i18n — MULTILINGUAL SYSTEM (21 languages)
+══════════════════════════════════════════ */
+(function(){
+var LANGS={pt:{flag:'🇧🇷',name:'Português'},en:{flag:'🇺🇸',name:'English'},es:{flag:'🇪🇸',name:'Español'},fr:{flag:'🇫🇷',name:'Français'},ar:{flag:'🇸🇦',name:'العربية',rtl:true},hi:{flag:'🇮🇳',name:'हिन्दी'},id:{flag:'🇮🇩',name:'Indonesia'},ms:{flag:'🇲🇾',name:'Melayu'},tr:{flag:'🇹🇷',name:'Türkçe'},de:{flag:'🇩🇪',name:'Deutsch'},it:{flag:'🇮🇹',name:'Italiano'},nl:{flag:'🇳🇱',name:'Nederlands'},pl:{flag:'🇵🇱',name:'Polski'},ru:{flag:'🇷🇺',name:'Русский'},ja:{flag:'🇯🇵',name:'日本語'},ko:{flag:'🇰🇷',name:'한국어'},th:{flag:'🇹🇭',name:'ภาษาไทย'},vi:{flag:'🇻🇳',name:'Tiếng Việt'},sw:{flag:'🇰🇪',name:'Kiswahili'},bn:{flag:'🇧🇩',name:'বাংলা'},fa:{flag:'🇮🇷',name:'فارسی',rtl:true}};
+var T={
+pt:{nav_oleo:'O Leo',nav_candidato:'Candidato',nav_recrutador:'Recrutador',nav_plataformas:'Plataformas',nav_arquitetura:'Arquitetura',nav_cta:'Falar com a Venture AI',hero_eyebrow:'Venture AI\u00a0·\u00a0Inteligência Artificial',hero_h1_1:'Leo',hero_h1_2:'Recrutamento',hero_h1_3:'Reinventado.',hero_tagline:'O primeiro <strong>Agente de Recrutamento e Seleção com IA</strong> que parece humano de verdade — porque ele pensa, reage, entrevista e decide. Pelo WhatsApp e Telegram. Sem site, sem formulário, sem robozão chato.',stat_nos:'nós de automação',stat_workflows:'workflows ativos',stat_disp:'disponibilidade',stat_candidatos:'candidatos simultâneos',btn_wa:'Testar no WhatsApp',btn_tg:'Testar no Telegram',btn_start:'Começar grátis',tag_problema:'O Problema',title_problema:'O recrutamento tradicional<br>está <span class="red">quebrado.</span>',desc_problema:'A experiência do candidato é frustrante. O RH humano não escala. E os melhores talentos desistem antes de serem vistos.',tag_oleo:'Conheça o Leo',title_oleo:'26 anos.<br>Paulistano.<br><span>Disponível 24/7.</span>',desc_oleo:'O Leo tem personalidade real — é carismático, bem-humorado, empático e focado. Fala como gente de verdade pelo WhatsApp, usa as gírias certas na hora certa e sabe exatamente quando o candidato está brincando ou sendo sério.',tag_candidato:'Módulo Candidato',title_candidato:'A entrevista que ninguém percebe<br>ser uma <span>entrevista.</span>',desc_candidato:'Processo completo de qualificação, 100% conversacional, pelo app que todo mundo já tem.',tag_recrutador:'Módulo Recrutador',title_recrutador:'Gestão completa.<br><span>Sem esforço manual.</span>',desc_recrutador:'O recrutador fala com o Leo pelo WhatsApp como falaria com um colega. O Leo cuida de todo o resto.',tag_diferenciais:'Diferenciais Únicos',title_diferenciais:'O que nenhuma outra<br>solução <span>tem.</span>',tag_comparativo:'Comparativo',title_comparativo:'Leo vs. <span>O mercado.</span>',desc_comparativo:'Coloque qualquer solução ao lado do Leo. A diferença fala por si mesma.',tag_plataformas:'Plataformas',title_plataformas:'Onde o <span>Leo</span> vive.',desc_plataformas:'WhatsApp e Telegram são os dois apps de mensagem mais instalados no Brasil. Não precisa convencer ninguém a baixar nada.',tag_arquitetura:'Arquitetura Técnica',title_arquitetura:'Construído para escalar<br>sem <span>limites.</span>',desc_arquitetura:'Um sistema de automação de nível enterprise, rodando 24 horas em servidor dedicado, com retry automático e redundância.',tag_ficha:'Ficha Técnica',title_ficha:'Especificações<br>do <span>sistema.</span>',tag_cta:'O Futuro do RH',title_cta:'Seu próximo processo seletivo<br><span>começa aqui.</span>',desc_cta:'O Leo não é um produto do futuro. É um Agente de Recrutamento e Seleção em produção, testado, refinado e pronto para trabalhar pela sua empresa — hoje, agora, sem parar.',footer_tagline:'Leo — Agente de Recrutamento e Seleção com Inteligência Artificial',tag_planos:'Planos e Preços',title_planos:'Comece com <span>14 dias grátis.</span>',desc_planos:'Sem cartão de crédito para testar. Cancele quando quiser. Escolha o plano que melhor se encaixa no ritmo da sua operação.',badge_popular:'Mais Popular',badge_value:'Melhor Valor',plan_mensal:'Mensal',plan_trimestral:'Trimestral',plan_anual:'Anual',free_trial:'14 dias grátis',img_chat_cand:'Conversa do candidato com o Leo',img_chat_rec:'Conversa do recrutador com o Leo'},
+en:{nav_oleo:'About Leo',nav_candidato:'Candidate',nav_recrutador:'Recruiter',nav_plataformas:'Platforms',nav_arquitetura:'Architecture',nav_cta:'Talk to Venture AI',hero_eyebrow:'Venture AI\u00a0·\u00a0Artificial Intelligence',hero_h1_1:'Leo',hero_h1_2:'Recruitment',hero_h1_3:'Reinvented.',hero_tagline:'The first <strong>AI Recruitment Agent</strong> that feels genuinely human — because it thinks, reacts, interviews and decides. Via WhatsApp and Telegram. No site, no form, no boring bot.',stat_nos:'automation nodes',stat_workflows:'active workflows',stat_disp:'availability',stat_candidatos:'simultaneous candidates',btn_wa:'Test on WhatsApp',btn_tg:'Test on Telegram',btn_start:'Start free',tag_problema:'The Problem',title_problema:'Traditional recruitment<br>is <span class="red">broken.</span>',desc_problema:'Candidate experience is frustrating. Human HR cannot scale. And the best talents give up before being seen.',tag_oleo:'Meet Leo',title_oleo:'26 years old.<br>From São Paulo.<br><span>Available 24/7.</span>',desc_oleo:'Leo has a real personality — charismatic, witty, empathetic and focused. Talks naturally via WhatsApp, using the right tone at the right time.',tag_candidato:'Candidate Module',title_candidato:'The interview no one<br>realizes is an <span>interview.</span>',desc_candidato:'Complete qualification process, 100% conversational, through the app everyone already has.',tag_recrutador:'Recruiter Module',title_recrutador:'Full management.<br><span>Zero manual effort.</span>',desc_recrutador:'The recruiter talks to Leo via WhatsApp like a colleague. Leo handles everything else.',tag_diferenciais:'Unique Advantages',title_diferenciais:'What no other<br>solution <span>has.</span>',tag_comparativo:'Comparison',title_comparativo:'Leo vs. <span>The market.</span>',desc_comparativo:'Put any solution next to Leo. The difference speaks for itself.',tag_plataformas:'Platforms',title_plataformas:'Where <span>Leo</span> lives.',desc_plataformas:'WhatsApp and Telegram are the two most installed messaging apps in Brazil. No need to convince anyone to download anything.',tag_arquitetura:'Technical Architecture',title_arquitetura:'Built to scale<br>without <span>limits.</span>',desc_arquitetura:'An enterprise-level automation system running 24 hours on a dedicated server, with automatic retry and redundancy.',tag_ficha:'Technical Specs',title_ficha:'System<br><span>specifications.</span>',tag_cta:'The Future of HR',title_cta:'Your next hiring process<br><span>starts here.</span>',desc_cta:"Leo isn't a product of the future. It's a Recruitment Agent in production, tested, refined and ready to work for your company — today, now, non-stop.",footer_tagline:'Leo — AI-Powered Recruitment and Selection Agent',tag_planos:'Plans & Pricing',title_planos:'Start with <span>14 days free.</span>',desc_planos:'No credit card required to test. Cancel anytime. Choose the plan that fits your operation.',badge_popular:'Most Popular',badge_value:'Best Value',plan_mensal:'Monthly',plan_trimestral:'Quarterly',plan_anual:'Annual',free_trial:'14 days free',img_chat_cand:'Candidate conversation with Leo',img_chat_rec:'Recruiter conversation with Leo'},
+es:{nav_oleo:'Sobre Leo',nav_candidato:'Candidato',nav_recrutador:'Reclutador',nav_plataformas:'Plataformas',nav_arquitetura:'Arquitectura',nav_cta:'Hablar con Venture AI',hero_eyebrow:'Venture AI\u00a0·\u00a0Inteligencia Artificial',hero_h1_1:'Leo',hero_h1_2:'Reclutamiento',hero_h1_3:'Reinventado.',hero_tagline:'El primer <strong>Agente de Reclutamiento IA</strong> que parece genuinamente humano — porque piensa, reacciona, entrevista y decide. Vía WhatsApp y Telegram.',stat_nos:'nodos de automatización',stat_workflows:'flujos activos',stat_disp:'disponibilidad',stat_candidatos:'candidatos simultáneos',btn_wa:'Probar en WhatsApp',btn_tg:'Probar en Telegram',btn_start:'Empezar gratis',tag_problema:'El Problema',title_problema:'El reclutamiento tradicional<br>está <span class="red">roto.</span>',desc_problema:'La experiencia del candidato es frustrante. RRHH humano no escala. Los mejores talentos se rinden antes de ser vistos.',tag_oleo:'Conoce a Leo',title_oleo:'26 años.<br>De São Paulo.<br><span>Disponible 24/7.</span>',desc_oleo:'Leo tiene una personalidad real — carismático, ingenioso, empático y enfocado.',tag_candidato:'Módulo Candidato',title_candidato:'La entrevista que nadie<br>percibe como <span>entrevista.</span>',desc_candidato:'Proceso completo de calificación, 100% conversacional, a través de la app que todos ya tienen.',tag_recrutador:'Módulo Reclutador',title_recrutador:'Gestión completa.<br><span>Sin esfuerzo manual.</span>',desc_recrutador:'El reclutador habla con Leo por WhatsApp como con un colega. Leo se encarga del resto.',tag_diferenciais:'Ventajas Únicas',title_diferenciais:'Lo que ninguna otra<br>solución <span>tiene.</span>',tag_comparativo:'Comparativa',title_comparativo:'Leo vs. <span>El mercado.</span>',desc_comparativo:'Pon cualquier solución junto a Leo. La diferencia habla por sí misma.',tag_plataformas:'Plataformas',title_plataformas:'Donde vive <span>Leo</span>.',desc_plataformas:'WhatsApp y Telegram son las dos apps de mensajería más instaladas en Brasil.',tag_arquitetura:'Arquitectura Técnica',title_arquitetura:'Construido para escalar<br>sin <span>límites.</span>',desc_arquitetura:'Sistema de automatización de nivel enterprise que funciona 24 horas en servidor dedicado.',tag_ficha:'Ficha Técnica',title_ficha:'Especificaciones<br>del <span>sistema.</span>',tag_cta:'El Futuro de RRHH',title_cta:'Tu próximo proceso de selección<br><span>empieza aquí.</span>',desc_cta:'Leo no es un producto del futuro. Es un Agente de Reclutamiento en producción, probado y listo para trabajar para tu empresa.',footer_tagline:'Leo — Agente de Reclutamiento y Selección con Inteligencia Artificial',tag_planos:'Planes y Precios',title_planos:'Comienza con <span>14 días gratis.</span>',desc_planos:'Sin tarjeta de crédito para probar. Cancela cuando quieras.',badge_popular:'Más Popular',badge_value:'Mejor Valor',plan_mensal:'Mensual',plan_trimestral:'Trimestral',plan_anual:'Anual',free_trial:'14 días gratis',img_chat_cand:'Conversación del candidato con Leo',img_chat_rec:'Conversación del reclutador con Leo'},
+fr:{nav_oleo:'À propos de Leo',nav_candidato:'Candidat',nav_recrutador:'Recruteur',nav_plataformas:'Plateformes',nav_arquitetura:'Architecture',nav_cta:'Parler à Venture AI',hero_eyebrow:'Venture AI\u00a0·\u00a0Intelligence Artificielle',hero_h1_1:'Leo',hero_h1_2:'Recrutement',hero_h1_3:'Réinventé.',hero_tagline:"Le premier <strong>Agent de Recrutement IA</strong> qui semble vraiment humain — parce qu'il pense, réagit, interviewe et décide. Via WhatsApp et Telegram.",stat_nos:"nœuds d'automatisation",stat_workflows:'workflows actifs',stat_disp:'disponibilité',stat_candidatos:'candidats simultanés',btn_wa:'Tester sur WhatsApp',btn_tg:'Tester sur Telegram',btn_start:'Commencer gratuitement',tag_problema:'Le Problème',title_problema:'Le recrutement traditionnel<br>est <span class="red">cassé.</span>',desc_problema:"L'expérience candidat est frustrante. Les RH humains ne scalent pas. Les meilleurs talents abandonnent avant d'être vus.",tag_oleo:'Rencontrez Leo',title_oleo:'26 ans.<br>De São Paulo.<br><span>Disponible 24/7.</span>',desc_oleo:'Leo a une vraie personnalité — charismatique, spirituel, empathique et concentré.',tag_candidato:'Module Candidat',title_candidato:"L'entretien que personne<br>ne perçoit comme un <span>entretien.</span>",desc_candidato:"Processus de qualification complet, 100% conversationnel, via l'appli que tout le monde a déjà.",tag_recrutador:'Module Recruteur',title_recrutador:'Gestion complète.<br><span>Zéro effort manuel.</span>',desc_recrutador:"Le recruteur parle à Leo via WhatsApp comme à un collègue. Leo s'occupe du reste.",tag_diferenciais:'Avantages Uniques',title_diferenciais:"Ce qu'aucune autre<br>solution <span>n'a.</span>",tag_comparativo:'Comparatif',title_comparativo:'Leo vs. <span>Le marché.</span>',desc_comparativo:"Mettez n'importe quelle solution à côté de Leo. La différence parle d'elle-même.",tag_plataformas:'Plateformes',title_plataformas:'Où vit <span>Leo</span>.',desc_plataformas:'WhatsApp et Telegram sont les deux apps de messagerie les plus installées au Brésil.',tag_arquitetura:'Architecture Technique',title_arquitetura:'Conçu pour scaler<br>sans <span>limites.</span>',desc_arquitetura:"Système d'automatisation de niveau enterprise fonctionnant 24h sur serveur dédié.",tag_ficha:'Fiche Technique',title_ficha:'Spécifications<br>du <span>système.</span>',tag_cta:"L'Avenir des RH",title_cta:'Votre prochain processus de recrutement<br><span>commence ici.</span>',desc_cta:"Leo n'est pas un produit du futur. C'est un Agent de Recrutement en production, testé et prêt pour votre entreprise.",footer_tagline:'Leo — Agent de Recrutement et Sélection par Intelligence Artificielle',tag_planos:'Plans & Tarifs',title_planos:'Commencez avec <span>14 jours gratuits.</span>',desc_planos:"Pas de carte de crédit pour tester. Annulez quand vous voulez.",badge_popular:'Le Plus Populaire',badge_value:'Meilleur Rapport',plan_mensal:'Mensuel',plan_trimestral:'Trimestriel',plan_anual:'Annuel',free_trial:'14 jours gratuits',img_chat_cand:'Conversation du candidat avec Leo',img_chat_rec:'Conversation du recruteur avec Leo'},
+ar:{nav_oleo:'عن ليو',nav_candidato:'المرشح',nav_recrutador:'المُجنِّد',nav_plataformas:'المنصات',nav_arquitetura:'البنية',nav_cta:'تحدث مع Venture AI',hero_eyebrow:'Venture AI\u00a0·\u00a0الذكاء الاصطناعي',hero_h1_1:'Leo',hero_h1_2:'التوظيف',hero_h1_3:'مُعاد ابتكاره.',hero_tagline:'أول <strong>وكيل توظيف بالذكاء الاصطناعي</strong> يبدو بشريًا حقًا — لأنه يفكر ويتفاعل ويُجري المقابلات ويقرر. عبر واتساب وتيليغرام.',stat_nos:'عقد أتمتة',stat_workflows:'سير عمل نشطة',stat_disp:'التوفر',stat_candidatos:'مرشحون متزامنون',btn_wa:'اختبر على واتساب',btn_tg:'اختبر على تيليغرام',btn_start:'ابدأ مجانًا',tag_problema:'المشكلة',title_problema:'التوظيف التقليدي<br><span class="red">مكسور.</span>',desc_problema:'تجربة المرشح محبطة. فريق الموارد البشرية لا يتوسع. وأفضل المواهب تستسلم قبل أن تُرى.',tag_oleo:'تعرف على Leo',title_oleo:'26 عامًا.<br>من ساو باولو.<br><span>متاح 24/7.</span>',desc_oleo:'ليو يمتلك شخصية حقيقية — كاريزمي، طريف، متعاطف ومركز.',tag_candidato:'وحدة المرشح',title_candidato:'المقابلة التي لا يدرك<br>أحد أنها <span>مقابلة.</span>',desc_candidato:'عملية تأهيل كاملة، محادثة بالكامل، عبر التطبيق الذي يمتلكه الجميع.',tag_recrutador:'وحدة المُجنِّد',title_recrutador:'إدارة كاملة.<br><span>دون جهد يدوي.</span>',desc_recrutador:'يتحدث المُجنِّد مع ليو عبر واتساب كما يفعل مع زميل.',tag_diferenciais:'مزايا فريدة',title_diferenciais:'ما لا تمتلكه<br>أي حل <span>آخر.</span>',tag_comparativo:'مقارنة',title_comparativo:'Leo مقابل <span>السوق.</span>',desc_comparativo:'ضع أي حل بجانب ليو. الفرق يتحدث عن نفسه.',tag_plataformas:'المنصات',title_plataformas:'أين يعيش <span>Leo</span>.',desc_plataformas:'واتساب وتيليغرام هما التطبيقان الأكثر تثبيتًا في البرازيل.',tag_arquitetura:'البنية التقنية',title_arquitetura:'مبني للتوسع<br>دون <span>حدود.</span>',desc_arquitetura:'نظام أتمتة على مستوى المؤسسات يعمل 24 ساعة على خادم مخصص.',tag_ficha:'المواصفات الفنية',title_ficha:'مواصفات<br><span>النظام.</span>',tag_cta:'مستقبل الموارد البشرية',title_cta:'عملية التوظيف القادمة<br><span>تبدأ هنا.</span>',desc_cta:'ليو ليس منتجًا للمستقبل. إنه وكيل توظيف في الإنتاج، مُختبَر وجاهز للعمل لشركتك.',footer_tagline:'Leo — وكيل التوظيف والاختيار بالذكاء الاصطناعي',tag_planos:'الخطط والأسعار',title_planos:'ابدأ بـ <span>14 يوم مجاني.</span>',desc_planos:'لا بطاقة ائتمان للتجربة. ألغِ في أي وقت.',badge_popular:'الأكثر شعبية',badge_value:'أفضل قيمة',plan_mensal:'شهري',plan_trimestral:'ربع سنوي',plan_anual:'سنوي',free_trial:'14 يوم مجاني',img_chat_cand:'محادثة المرشح مع Leo',img_chat_rec:'محادثة المُجنِّد مع Leo'},
+hi:{nav_oleo:'Leo के बारे में',nav_candidato:'उम्मीदवार',nav_recrutador:'भर्तीकर्ता',nav_plataformas:'प्लेटफ़ॉर्म',nav_arquitetura:'आर्किटेक्चर',nav_cta:'Venture AI से बात करें',hero_eyebrow:'Venture AI\u00a0·\u00a0आर्टिफिशियल इंटेलिजेंस',hero_h1_1:'Leo',hero_h1_2:'भर्ती',hero_h1_3:'पुनः परिभाषित.',hero_tagline:'पहला <strong>AI भर्ती एजेंट</strong> जो वास्तव में मानवीय लगता है — क्योंकि वह सोचता है, प्रतिक्रिया करता है, इंटरव्यू लेता है और निर्णय करता है।',stat_nos:'ऑटोमेशन नोड्स',stat_workflows:'सक्रिय वर्कफ़्लो',stat_disp:'उपलब्धता',stat_candidatos:'एक साथ उम्मीदवार',btn_wa:'WhatsApp पर आज़माएं',btn_tg:'Telegram पर आज़माएं',btn_start:'मुफ़्त शुरू करें',tag_problema:'समस्या',title_problema:'पारंपरिक भर्ती<br><span class="red">टूटी हुई है।</span>',desc_problema:'उम्मीदवार का अनुभव निराशाजनक है। मानव HR स्केल नहीं कर सकता।',tag_oleo:'Leo से मिलें',title_oleo:'26 साल का।<br>साओ पाउलो का।<br><span>24/7 उपलब्ध।</span>',desc_oleo:'Leo की असली व्यक्तित्व है — करिश्माई, मज़ेदार, सहानुभूतिपूर्ण और केंद्रित।',tag_candidato:'उम्मीदवार मॉड्यूल',title_candidato:'इंटरव्यू जो किसी को<br>इंटरव्यू नहीं <span>लगता।</span>',desc_candidato:'पूर्ण योग्यता प्रक्रिया, 100% संवादात्मक, उस ऐप के माध्यम से जो सभी के पास है।',tag_recrutador:'भर्तीकर्ता मॉड्यूल',title_recrutador:'पूर्ण प्रबंधन।<br><span>शून्य मैनुअल प्रयास।</span>',desc_recrutador:'भर्तीकर्ता Leo से WhatsApp पर एक सहकर्मी की तरह बात करता है।',tag_diferenciais:'अनूठे लाभ',title_diferenciais:'जो कोई अन्य<br>समाधान <span>नहीं देता।</span>',tag_comparativo:'तुलना',title_comparativo:'Leo बनाम <span>बाज़ार।</span>',desc_comparativo:'Leo के बगल में कोई भी समाधान रखें। अंतर खुद बोलता है।',tag_plataformas:'प्लेटफ़ॉर्म',title_plataformas:'<span>Leo</span> कहाँ रहता है।',desc_plataformas:'WhatsApp और Telegram ब्राज़ील में सबसे ज़्यादा इंस्टॉल किए गए मैसेजिंग ऐप हैं।',tag_arquitetura:'तकनीकी आर्किटेक्चर',title_arquitetura:'बिना <span>सीमाओं</span> के<br>स्केल करने के लिए बना।',desc_arquitetura:'एंटरप्राइज़-स्तर का ऑटोमेशन सिस्टम जो 24 घंटे समर्पित सर्वर पर चलता है।',tag_ficha:'तकनीकी विवरण',title_ficha:'सिस्टम<br><span>विनिर्देश।</span>',tag_cta:'HR का भविष्य',title_cta:'आपकी अगली भर्ती प्रक्रिया<br><span>यहाँ से शुरू होती है।</span>',desc_cta:'Leo भविष्य का उत्पाद नहीं है। यह उत्पादन में एक भर्ती एजेंट है।',footer_tagline:'Leo — AI-संचालित भर्ती और चयन एजेंट',tag_planos:'योजनाएं और मूल्य',title_planos:'<span>14 दिन मुफ़्त</span> के साथ शुरू करें।',desc_planos:'परीक्षण के लिए कोई क्रेडिट कार्ड नहीं। जब चाहें रद्द करें।',badge_popular:'सबसे लोकप्रिय',badge_value:'सर्वोत्तम मूल्य',plan_mensal:'मासिक',plan_trimestral:'तिमाही',plan_anual:'वार्षिक',free_trial:'14 दिन मुफ़्त',img_chat_cand:'Leo के साथ उम्मीदवार की बातचीत',img_chat_rec:'Leo के साथ भर्तीकर्ता की बातचीत'},
+id:{nav_oleo:'Tentang Leo',nav_candidato:'Kandidat',nav_recrutador:'Perekrut',nav_plataformas:'Platform',nav_arquitetura:'Arsitektur',nav_cta:'Bicara dengan Venture AI',hero_eyebrow:'Venture AI\u00a0·\u00a0Kecerdasan Buatan',hero_h1_1:'Leo',hero_h1_2:'Rekrutmen',hero_h1_3:'Diinventasi Ulang.',hero_tagline:'Agen <strong>Rekrutmen AI</strong> pertama yang terasa manusiawi — karena berpikir, bereaksi, mewawancarai, dan memutuskan. Melalui WhatsApp dan Telegram.',stat_nos:'node otomatisasi',stat_workflows:'alur kerja aktif',stat_disp:'ketersediaan',stat_candidatos:'kandidat simultan',btn_wa:'Coba di WhatsApp',btn_tg:'Coba di Telegram',btn_start:'Mulai gratis',tag_problema:'Masalah',title_problema:'Rekrutmen tradisional<br><span class="red">rusak.</span>',desc_problema:'Pengalaman kandidat membuat frustrasi. HR manusia tidak bisa skalanya.',tag_oleo:'Kenali Leo',title_oleo:'26 tahun.<br>Dari São Paulo.<br><span>Tersedia 24/7.</span>',desc_oleo:'Leo memiliki kepribadian nyata — karismatik, lucu, empatik, dan fokus.',tag_candidato:'Modul Kandidat',title_candidato:'Wawancara yang tidak ada<br>yang sadari sebagai <span>wawancara.</span>',desc_candidato:'Proses kualifikasi lengkap, 100% percakapan, melalui aplikasi yang sudah dimiliki semua orang.',tag_recrutador:'Modul Perekrut',title_recrutador:'Manajemen penuh.<br><span>Tanpa usaha manual.</span>',desc_recrutador:'Perekrut berbicara dengan Leo melalui WhatsApp seperti dengan rekan kerja.',tag_diferenciais:'Keunggulan Unik',title_diferenciais:'Yang tidak dimiliki<br>solusi lain <span>manapun.</span>',tag_comparativo:'Perbandingan',title_comparativo:'Leo vs. <span>Pasar.</span>',desc_comparativo:'Letakkan solusi apapun di samping Leo. Perbedaannya berbicara sendiri.',tag_plataformas:'Platform',title_plataformas:'Di mana <span>Leo</span> hidup.',desc_plataformas:'WhatsApp dan Telegram adalah dua aplikasi pesan paling banyak diinstal di Brasil.',tag_arquitetura:'Arsitektur Teknis',title_arquitetura:'Dibangun untuk skalabilitas<br>tanpa <span>batas.</span>',desc_arquitetura:'Sistem otomatisasi tingkat enterprise yang berjalan 24 jam di server khusus.',tag_ficha:'Spesifikasi Teknis',title_ficha:'Spesifikasi<br><span>sistem.</span>',tag_cta:'Masa Depan HR',title_cta:'Proses rekrutmen Anda berikutnya<br><span>dimulai di sini.</span>',desc_cta:'Leo bukan produk masa depan. Ini adalah Agen Rekrutmen yang sudah berproduksi, teruji dan siap.',footer_tagline:'Leo — Agen Rekrutmen dan Seleksi Bertenaga AI',tag_planos:'Paket & Harga',title_planos:'Mulai dengan <span>14 hari gratis.</span>',desc_planos:'Tidak perlu kartu kredit untuk mencoba. Batalkan kapan saja.',badge_popular:'Paling Populer',badge_value:'Nilai Terbaik',plan_mensal:'Bulanan',plan_trimestral:'Triwulanan',plan_anual:'Tahunan',free_trial:'14 hari gratis',img_chat_cand:'Percakapan kandidat dengan Leo',img_chat_rec:'Percakapan perekrut dengan Leo'},
+ms:{nav_oleo:'Tentang Leo',nav_candidato:'Calon',nav_recrutador:'Perekrut',nav_plataformas:'Platform',nav_arquitetura:'Seni Bina',nav_cta:'Bercakap dengan Venture AI',hero_eyebrow:'Venture AI\u00a0·\u00a0Kecerdasan Buatan',hero_h1_1:'Leo',hero_h1_2:'Pengambilan',hero_h1_3:'Direka Semula.',hero_tagline:'Ejen <strong>Pengambilan AI</strong> pertama yang terasa seperti manusia — kerana ia berfikir, bertindak balas, menemu duga, dan membuat keputusan.',stat_nos:'nod automasi',stat_workflows:'aliran kerja aktif',stat_disp:'ketersediaan',stat_candidatos:'calon serentak',btn_wa:'Cuba di WhatsApp',btn_tg:'Cuba di Telegram',btn_start:'Mulakan percuma',tag_problema:'Masalah',title_problema:'Pengambilan tradisional<br><span class="red">rosak.</span>',desc_problema:'Pengalaman calon mengecewakan. HR manusia tidak boleh berkembang.',tag_oleo:'Kenali Leo',title_oleo:'26 tahun.<br>Dari São Paulo.<br><span>Tersedia 24/7.</span>',desc_oleo:'Leo mempunyai personaliti sebenar — karismatik, jenaka, empati dan fokus.',tag_candidato:'Modul Calon',title_candidato:'Temu duga yang tiada siapa<br>sedar sebagai <span>temu duga.</span>',desc_candidato:'Proses kelayakan lengkap, 100% perbualan, melalui apl yang semua orang sudah ada.',tag_recrutador:'Modul Perekrut',title_recrutador:'Pengurusan penuh.<br><span>Tiada usaha manual.</span>',desc_recrutador:'Perekrut bercakap dengan Leo melalui WhatsApp seperti dengan rakan sekerja.',tag_diferenciais:'Kelebihan Unik',title_diferenciais:'Yang tiada penyelesaian<br>lain <span>ada.</span>',tag_comparativo:'Perbandingan',title_comparativo:'Leo vs. <span>Pasaran.</span>',desc_comparativo:'Letakkan sebarang penyelesaian di sebelah Leo. Perbezaannya berbicara sendiri.',tag_plataformas:'Platform',title_plataformas:'Di mana <span>Leo</span> hidup.',desc_plataformas:'WhatsApp dan Telegram adalah dua apl pemesejan paling banyak dipasang di Brazil.',tag_arquitetura:'Seni Bina Teknikal',title_arquitetura:'Dibina untuk berkembang<br>tanpa <span>had.</span>',desc_arquitetura:'Sistem automasi peringkat enterprise yang berjalan 24 jam pada pelayan khusus.',tag_ficha:'Spesifikasi Teknikal',title_ficha:'Spesifikasi<br><span>sistem.</span>',tag_cta:'Masa Depan HR',title_cta:'Proses pengambilan seterusnya<br><span>bermula di sini.</span>',desc_cta:'Leo bukan produk masa depan. Ia adalah Ejen Pengambilan dalam pengeluaran, diuji dan diperhalusi.',footer_tagline:'Leo — Ejen Pengambilan dan Pemilihan Dikuasai AI',tag_planos:'Pelan & Harga',title_planos:'Mulakan dengan <span>14 hari percuma.</span>',desc_planos:'Tiada kad kredit diperlukan untuk mencuba. Batalkan bila-bila masa.',badge_popular:'Paling Popular',badge_value:'Nilai Terbaik',plan_mensal:'Bulanan',plan_trimestral:'Suku Tahunan',plan_anual:'Tahunan',free_trial:'14 hari percuma',img_chat_cand:'Perbualan calon dengan Leo',img_chat_rec:'Perbualan perekrut dengan Leo'},
+tr:{nav_oleo:'Leo Hakkında',nav_candidato:'Aday',nav_recrutador:'İşe Alım Uzmanı',nav_plataformas:'Platformlar',nav_arquitetura:'Mimari',nav_cta:'Venture AI ile Konuşun',hero_eyebrow:'Venture AI\u00a0·\u00a0Yapay Zeka',hero_h1_1:'Leo',hero_h1_2:'İşe Alım',hero_h1_3:'Yeniden Keşfedildi.',hero_tagline:'Gerçekten insani hissettiren ilk <strong>Yapay Zeka İşe Alım Ajanı</strong> — çünkü düşünür, tepki verir, mülakat yapar ve karar verir.',stat_nos:'otomasyon düğümü',stat_workflows:'aktif iş akışı',stat_disp:'kullanılabilirlik',stat_candidatos:'eş zamanlı aday',btn_wa:"WhatsApp'ta Dene",btn_tg:"Telegram'da Dene",btn_start:'Ücretsiz Başla',tag_problema:'Sorun',title_problema:'Geleneksel işe alım<br><span class="red">bozuk.</span>',desc_problema:'Aday deneyimi hayal kırıklığı yaratıyor. İnsan İK ölçeklenemiyor.',tag_oleo:"Leo'yu Tanıyın",title_oleo:"26 yaşında.<br>São Paulo'lu.<br><span>7/24 Müsait.</span>",desc_oleo:"Leo gerçek bir kişiliğe sahip — karizmatik, esprili, empatik ve odaklı.",tag_candidato:'Aday Modülü',title_candidato:'Kimsenin fark etmediği<br>bir <span>mülakat.</span>',desc_candidato:'Herkesin zaten sahip olduğu uygulama üzerinden 100% konuşma tabanlı tam nitelendirme süreci.',tag_recrutador:'İşe Alım Uzmanı Modülü',title_recrutador:'Tam yönetim.<br><span>Sıfır manuel çaba.</span>',desc_recrutador:"İşe alım uzmanı Leo ile WhatsApp'ta bir meslektaşıyla konuşur gibi konuşur.",tag_diferenciais:'Benzersiz Avantajlar',title_diferenciais:'Hiçbir çözümün<br><span>sahip olmadığı.</span>',tag_comparativo:'Karşılaştırma',title_comparativo:'Leo vs. <span>Pazar.</span>',desc_comparativo:"Leo'nun yanına herhangi bir çözüm koyun. Fark kendi kendini anlatır.",tag_plataformas:'Platformlar',title_plataformas:"<span>Leo</span>'nun yaşadığı yer.",desc_plataformas:"WhatsApp ve Telegram, Brezilya'da en çok yüklenen iki mesajlaşma uygulamasıdır.",tag_arquitetura:'Teknik Mimari',title_arquitetura:'Sınırsız ölçeklenmek için<br><span>inşa edildi.</span>',desc_arquitetura:'7/24 özel sunucuda çalışan kurumsal düzeyde otomasyon sistemi.',tag_ficha:'Teknik Özellikler',title_ficha:'Sistem<br><span>özellikleri.</span>',tag_cta:"İK'nın Geleceği",title_cta:'Bir sonraki işe alım süreciniz<br><span>buradan başlıyor.</span>',desc_cta:"Leo geleceğin ürünü değil. Üretimde olan, test edilmiş ve şirketiniz için çalışmaya hazır bir İşe Alım Ajanı.",footer_tagline:'Leo — Yapay Zeka Destekli İşe Alım ve Seçim Ajanı',tag_planos:'Planlar ve Fiyatlar',title_planos:'<span>14 günlük ücretsiz deneme</span> ile başlayın.',desc_planos:'Test için kredi kartı gerekmez. İstediğiniz zaman iptal edin.',badge_popular:'En Popüler',badge_value:'En İyi Değer',plan_mensal:'Aylık',plan_trimestral:'Üç Aylık',plan_anual:'Yıllık',free_trial:'14 gün ücretsiz',img_chat_cand:'Leo ile aday konuşması',img_chat_rec:'Leo ile işe alım uzmanı konuşması'},
+de:{nav_oleo:'Über Leo',nav_candidato:'Kandidat',nav_recrutador:'Recruiter',nav_plataformas:'Plattformen',nav_arquitetura:'Architektur',nav_cta:'Mit Venture AI sprechen',hero_eyebrow:'Venture AI\u00a0·\u00a0Künstliche Intelligenz',hero_h1_1:'Leo',hero_h1_2:'Recruiting',hero_h1_3:'Neu erfunden.',hero_tagline:'Der erste <strong>KI-Recruiting-Agent</strong>, der sich wirklich menschlich anfühlt — weil er denkt, reagiert, Interviews führt und entscheidet. Über WhatsApp und Telegram.',stat_nos:'Automatisierungsknoten',stat_workflows:'aktive Workflows',stat_disp:'Verfügbarkeit',stat_candidatos:'gleichzeitige Kandidaten',btn_wa:'Auf WhatsApp testen',btn_tg:'Auf Telegram testen',btn_start:'Kostenlos starten',tag_problema:'Das Problem',title_problema:'Traditionelles Recruiting<br>ist <span class="red">kaputt.</span>',desc_problema:'Die Kandidatenerfahrung ist frustrierend. Menschliche HR skaliert nicht.',tag_oleo:'Triff Leo',title_oleo:'26 Jahre alt.<br>Aus São Paulo.<br><span>24/7 verfügbar.</span>',desc_oleo:'Leo hat eine echte Persönlichkeit — charismatisch, witzig, empathisch und fokussiert.',tag_candidato:'Kandidaten-Modul',title_candidato:'Das Interview, das niemand<br>als <span>Interview</span> wahrnimmt.',desc_candidato:'Vollständiger Qualifizierungsprozess, 100% konversationell, über die App, die jeder bereits hat.',tag_recrutador:'Recruiter-Modul',title_recrutador:'Vollständiges Management.<br><span>Null manueller Aufwand.</span>',desc_recrutador:'Der Recruiter spricht mit Leo über WhatsApp wie mit einem Kollegen.',tag_diferenciais:'Einzigartige Vorteile',title_diferenciais:'Was keine andere<br>Lösung <span>hat.</span>',tag_comparativo:'Vergleich',title_comparativo:'Leo vs. <span>Der Markt.</span>',desc_comparativo:'Stellen Sie jede Lösung neben Leo. Der Unterschied spricht für sich.',tag_plataformas:'Plattformen',title_plataformas:'Wo <span>Leo</span> lebt.',desc_plataformas:'WhatsApp und Telegram sind die beiden meistinstallierten Messaging-Apps in Brasilien.',tag_arquitetura:'Technische Architektur',title_arquitetura:'Gebaut zum Skalieren<br>ohne <span>Grenzen.</span>',desc_arquitetura:'Enterprise-Automatisierungssystem, das 24 Stunden auf einem dedizierten Server läuft.',tag_ficha:'Technische Spezifikationen',title_ficha:'System-<br><span>spezifikationen.</span>',tag_cta:'Die Zukunft von HR',title_cta:'Ihr nächster Einstellungsprozess<br><span>beginnt hier.</span>',desc_cta:'Leo ist kein Produkt der Zukunft. Es ist ein Recruiting-Agent in der Produktion, getestet und bereit für Ihr Unternehmen.',footer_tagline:'Leo — KI-gestützter Recruiting- und Auswahlgent',tag_planos:'Pläne & Preise',title_planos:'Starten Sie mit <span>14 Tagen kostenlos.</span>',desc_planos:'Keine Kreditkarte zum Testen erforderlich. Jederzeit kündbar.',badge_popular:'Am beliebtesten',badge_value:'Bestes Preis-Leistung',plan_mensal:'Monatlich',plan_trimestral:'Vierteljährlich',plan_anual:'Jährlich',free_trial:'14 Tage kostenlos',img_chat_cand:'Kandidatengespräch mit Leo',img_chat_rec:'Recruitergespräch mit Leo'},
+it:{nav_oleo:'Su Leo',nav_candidato:'Candidato',nav_recrutador:'Recruiter',nav_plataformas:'Piattaforme',nav_arquitetura:'Architettura',nav_cta:'Parla con Venture AI',hero_eyebrow:'Venture AI\u00a0·\u00a0Intelligenza Artificiale',hero_h1_1:'Leo',hero_h1_2:'Recruitment',hero_h1_3:'Reinventato.',hero_tagline:'Il primo <strong>Agente di Recruitment AI</strong> che sembra davvero umano — perché pensa, reagisce, intervista e decide. Via WhatsApp e Telegram.',stat_nos:'nodi di automazione',stat_workflows:'workflow attivi',stat_disp:'disponibilità',stat_candidatos:'candidati simultanei',btn_wa:'Prova su WhatsApp',btn_tg:'Prova su Telegram',btn_start:'Inizia gratis',tag_problema:'Il Problema',title_problema:'Il recruitment tradizionale<br>è <span class="red">rotto.</span>',desc_problema:"L'esperienza del candidato è frustrante. Le HR umane non scalano.",tag_oleo:'Conosci Leo',title_oleo:'26 anni.<br>Di São Paulo.<br><span>Disponibile 24/7.</span>',desc_oleo:'Leo ha una personalità vera — carismatico, spiritoso, empatico e focalizzato.',tag_candidato:'Modulo Candidato',title_candidato:'Il colloquio che nessuno percepisce<br>come un <span>colloquio.</span>',desc_candidato:"Processo di qualificazione completo, 100% conversazionale, tramite l'app che tutti già hanno.",tag_recrutador:'Modulo Recruiter',title_recrutador:'Gestione completa.<br><span>Zero sforzo manuale.</span>',desc_recrutador:'Il recruiter parla con Leo via WhatsApp come con un collega.',tag_diferenciais:'Vantaggi Unici',title_diferenciais:'Quello che nessun altra<br>soluzione <span>ha.</span>',tag_comparativo:'Confronto',title_comparativo:'Leo vs. <span>Il mercato.</span>',desc_comparativo:'Metti qualsiasi soluzione accanto a Leo. La differenza parla da sola.',tag_plataformas:'Piattaforme',title_plataformas:'Dove vive <span>Leo</span>.',desc_plataformas:'WhatsApp e Telegram sono le due app di messaggistica più installate in Brasile.',tag_arquitetura:'Architettura Tecnica',title_arquitetura:'Costruito per scalare<br>senza <span>limiti.</span>',desc_arquitetura:'Sistema di automazione di livello enterprise in esecuzione 24 ore su server dedicato.',tag_ficha:'Scheda Tecnica',title_ficha:'Specifiche<br><span>del sistema.</span>',tag_cta:'Il Futuro delle HR',title_cta:'Il tuo prossimo processo di selezione<br><span>inizia qui.</span>',desc_cta:"Leo non è un prodotto del futuro. È un Agente di Recruitment in produzione, testato e pronto.",footer_tagline:'Leo — Agente di Recruitment e Selezione con Intelligenza Artificiale',tag_planos:'Piani e Prezzi',title_planos:'Inizia con <span>14 giorni gratis.</span>',desc_planos:'Nessuna carta di credito per provare. Cancella quando vuoi.',badge_popular:'Più Popolare',badge_value:'Miglior Valore',plan_mensal:'Mensile',plan_trimestral:'Trimestrale',plan_anual:'Annuale',free_trial:'14 giorni gratis',img_chat_cand:'Conversazione del candidato con Leo',img_chat_rec:'Conversazione del recruiter con Leo'},
+nl:{nav_oleo:'Over Leo',nav_candidato:'Kandidaat',nav_recrutador:'Recruiter',nav_plataformas:'Platformen',nav_arquitetura:'Architectuur',nav_cta:'Praat met Venture AI',hero_eyebrow:'Venture AI\u00a0·\u00a0Kunstmatige Intelligentie',hero_h1_1:'Leo',hero_h1_2:'Werving',hero_h1_3:'Heruitgevonden.',hero_tagline:'De eerste <strong>AI Wervingsagent</strong> die echt menselijk aanvoelt — omdat hij denkt, reageert, interviewt en beslist. Via WhatsApp en Telegram.',stat_nos:'automatiseringsknooppunten',stat_workflows:'actieve workflows',stat_disp:'beschikbaarheid',stat_candidatos:'gelijktijdige kandidaten',btn_wa:'Testen op WhatsApp',btn_tg:'Testen op Telegram',btn_start:'Gratis starten',tag_problema:'Het Probleem',title_problema:'Traditionele werving<br>is <span class="red">gebroken.</span>',desc_problema:'Kandidaatervaring is frustrerend. Menselijke HR schaalt niet.',tag_oleo:'Ontmoet Leo',title_oleo:'26 jaar oud.<br>Uit São Paulo.<br><span>24/7 beschikbaar.</span>',desc_oleo:'Leo heeft een echte persoonlijkheid — charismatisch, grappig, empathisch en gefocust.',tag_candidato:'Kandidaatmodule',title_candidato:'Het interview dat niemand<br>als <span>interview</span> ervaart.',desc_candidato:'Volledig kwalificatieproces, 100% conversationeel, via de app die iedereen al heeft.',tag_recrutador:'Recruitermodule',title_recrutador:'Volledig beheer.<br><span>Nul handmatige moeite.</span>',desc_recrutador:'De recruiter praat met Leo via WhatsApp als met een collega.',tag_diferenciais:'Unieke Voordelen',title_diferenciais:'Wat geen andere<br>oplossing <span>heeft.</span>',tag_comparativo:'Vergelijking',title_comparativo:'Leo vs. <span>De markt.</span>',desc_comparativo:'Zet een oplossing naast Leo. Het verschil spreekt voor zich.',tag_plataformas:'Platformen',title_plataformas:'Waar <span>Leo</span> leeft.',desc_plataformas:'WhatsApp en Telegram zijn de twee meest geïnstalleerde berichtenapps in Brazilië.',tag_arquitetura:'Technische Architectuur',title_arquitetura:'Gebouwd om te schalen<br>zonder <span>limieten.</span>',desc_arquitetura:'Enterprise-automatiseringssysteem dat 24 uur per dag op een dedicated server draait.',tag_ficha:'Technische Specificaties',title_ficha:'Systeem-<br><span>specificaties.</span>',tag_cta:'De Toekomst van HR',title_cta:'Uw volgende wervingsproces<br><span>begint hier.</span>',desc_cta:'Leo is geen product van de toekomst. Het is een Wervingsagent in productie, getest en klaar.',footer_tagline:'Leo — AI-aangedreven Werving en Selectieagent',tag_planos:'Plannen & Prijzen',title_planos:'Begin met <span>14 dagen gratis.</span>',desc_planos:'Geen creditcard nodig. Annuleer wanneer u wilt.',badge_popular:'Meest Populair',badge_value:'Beste Waarde',plan_mensal:'Maandelijks',plan_trimestral:'Driemaandelijks',plan_anual:'Jaarlijks',free_trial:'14 dagen gratis',img_chat_cand:'Kandidaatgesprek met Leo',img_chat_rec:'Recruitergesprek met Leo'},
+pl:{nav_oleo:'O Leo',nav_candidato:'Kandydat',nav_recrutador:'Rekruter',nav_plataformas:'Platformy',nav_arquitetura:'Architektura',nav_cta:'Porozmawiaj z Venture AI',hero_eyebrow:'Venture AI\u00a0·\u00a0Sztuczna Inteligencja',hero_h1_1:'Leo',hero_h1_2:'Rekrutacja',hero_h1_3:'Wymyślona na nowo.',hero_tagline:'Pierwszy <strong>Agent Rekrutacji AI</strong>, który naprawdę brzmi jak człowiek — bo myśli, reaguje, przeprowadza wywiady i decyduje. Przez WhatsApp i Telegram.',stat_nos:'węzły automatyzacji',stat_workflows:'aktywne przepływy pracy',stat_disp:'dostępność',stat_candidatos:'jednoczesni kandydaci',btn_wa:'Wypróbuj na WhatsApp',btn_tg:'Wypróbuj na Telegram',btn_start:'Zacznij bezpłatnie',tag_problema:'Problem',title_problema:'Tradycyjna rekrutacja<br>jest <span class="red">zepsuta.</span>',desc_problema:'Doświadczenie kandydata jest frustrujące. HR ludzki nie skaluje.',tag_oleo:'Poznaj Leo',title_oleo:'26 lat.<br>Z São Paulo.<br><span>Dostępny 24/7.</span>',desc_oleo:'Leo ma prawdziwą osobowość — charyzmatyczny, dowcipny, empatyczny i skupiony.',tag_candidato:'Moduł Kandydata',title_candidato:'Rozmowa kwalifikacyjna, której<br>nikt nie postrzega jako <span>rozmowy.</span>',desc_candidato:'Kompletny proces kwalifikacyjny, 100% konwersacyjny, przez aplikację, którą wszyscy już mają.',tag_recrutador:'Moduł Rekrutera',title_recrutador:'Pełne zarządzanie.<br><span>Zero ręcznego wysiłku.</span>',desc_recrutador:'Rekruter rozmawia z Leo przez WhatsApp jak z kolegą.',tag_diferenciais:'Unikalne Zalety',title_diferenciais:'Czego żadne inne<br>rozwiązanie <span>nie ma.</span>',tag_comparativo:'Porównanie',title_comparativo:'Leo vs. <span>Rynek.</span>',desc_comparativo:'Postaw dowolne rozwiązanie obok Leo. Różnica mówi sama za siebie.',tag_plataformas:'Platformy',title_plataformas:'Gdzie żyje <span>Leo</span>.',desc_plataformas:'WhatsApp i Telegram to dwie najczęściej instalowane aplikacje do komunikacji w Brazylii.',tag_arquitetura:'Architektura Techniczna',title_arquitetura:'Zbudowany do skalowania<br>bez <span>ograniczeń.</span>',desc_arquitetura:'System automatyzacji klasy enterprise działający 24 godziny na dedykowanym serwerze.',tag_ficha:'Specyfikacja Techniczna',title_ficha:'Specyfikacje<br><span>systemu.</span>',tag_cta:'Przyszłość HR',title_cta:'Twój następny proces rekrutacji<br><span>zaczyna się tutaj.</span>',desc_cta:'Leo nie jest produktem przyszłości. To Agent Rekrutacji w produkcji, przetestowany i gotowy.',footer_tagline:'Leo — Agent Rekrutacji i Selekcji oparty na AI',tag_planos:'Plany i Ceny',title_planos:'Zacznij z <span>14-dniowym darmowym dostępem.</span>',desc_planos:'Nie potrzeba karty kredytowej. Anuluj kiedy chcesz.',badge_popular:'Najpopularniejszy',badge_value:'Najlepsza Wartość',plan_mensal:'Miesięczny',plan_trimestral:'Kwartalny',plan_anual:'Roczny',free_trial:'14 dni bezpłatnie',img_chat_cand:'Rozmowa kandydata z Leo',img_chat_rec:'Rozmowa rekrutera z Leo'},
+ru:{nav_oleo:'О Leo',nav_candidato:'Кандидат',nav_recrutador:'Рекрутер',nav_plataformas:'Платформы',nav_arquitetura:'Архитектура',nav_cta:'Связаться с Venture AI',hero_eyebrow:'Venture AI\u00a0·\u00a0Искусственный интеллект',hero_h1_1:'Leo',hero_h1_2:'Рекрутинг',hero_h1_3:'Переосмыслен.',hero_tagline:'Первый <strong>ИИ-агент по подбору персонала</strong>, который ощущается по-настоящему человечным — потому что думает, реагирует, проводит интервью и принимает решения.',stat_nos:'узлов автоматизации',stat_workflows:'активных процессов',stat_disp:'доступность',stat_candidatos:'одновременных кандидатов',btn_wa:'Попробовать в WhatsApp',btn_tg:'Попробовать в Telegram',btn_start:'Начать бесплатно',tag_problema:'Проблема',title_problema:'Традиционный рекрутинг<br><span class="red">сломан.</span>',desc_problema:'Опыт кандидата разочаровывает. Человеческие HR не масштабируются.',tag_oleo:'Познакомьтесь с Leo',title_oleo:'26 лет.<br>Из Сан-Паулу.<br><span>Доступен 24/7.</span>',desc_oleo:'У Leo настоящая личность — харизматичный, остроумный, эмпатичный и сосредоточенный.',tag_candidato:'Модуль кандидата',title_candidato:'Интервью, которое никто<br>не воспринимает как <span>интервью.</span>',desc_candidato:'Полный процесс квалификации, 100% разговорный, через приложение, которое есть у всех.',tag_recrutador:'Модуль рекрутера',title_recrutador:'Полное управление.<br><span>Ноль ручных усилий.</span>',desc_recrutador:'Рекрутер общается с Leo через WhatsApp как с коллегой.',tag_diferenciais:'Уникальные преимущества',title_diferenciais:'То, чего нет<br>ни у одного <span>решения.</span>',tag_comparativo:'Сравнение',title_comparativo:'Leo vs. <span>Рынок.</span>',desc_comparativo:'Поставьте любое решение рядом с Leo. Разница говорит сама за себя.',tag_plataformas:'Платформы',title_plataformas:'Где живёт <span>Leo</span>.',desc_plataformas:'WhatsApp и Telegram — два самых устанавливаемых мессенджера в Бразилии.',tag_arquitetura:'Техническая архитектура',title_arquitetura:'Построен для масштабирования<br>без <span>ограничений.</span>',desc_arquitetura:'Система автоматизации корпоративного уровня, работающая 24 часа на выделенном сервере.',tag_ficha:'Технические характеристики',title_ficha:'Характеристики<br><span>системы.</span>',tag_cta:'Будущее HR',title_cta:'Ваш следующий процесс найма<br><span>начинается здесь.</span>',desc_cta:'Leo — не продукт будущего. Это Агент рекрутинга в производстве, протестированный и готовый.',footer_tagline:'Leo — Агент подбора и отбора персонала на базе ИИ',tag_planos:'Тарифы и цены',title_planos:'Начните с <span>14 дней бесплатно.</span>',desc_planos:'Кредитная карта не нужна. Отменить можно в любое время.',badge_popular:'Самый популярный',badge_value:'Лучшая ценность',plan_mensal:'Ежемесячный',plan_trimestral:'Ежеквартальный',plan_anual:'Ежегодный',free_trial:'14 дней бесплатно',img_chat_cand:'Разговор кандидата с Leo',img_chat_rec:'Разговор рекрутера с Leo'},
+ja:{nav_oleo:'Leoについて',nav_candidato:'候補者',nav_recrutador:'採用担当者',nav_plataformas:'プラットフォーム',nav_arquitetura:'アーキテクチャ',nav_cta:'Venture AIに相談',hero_eyebrow:'Venture AI\u00a0·\u00a0人工知能',hero_h1_1:'Leo',hero_h1_2:'採用',hero_h1_3:'再発明。',hero_tagline:'本当に人間らしい最初の<strong>AI採用エージェント</strong> — 考え、反応し、面接し、決断するから。WhatsAppとTelegramで。',stat_nos:'自動化ノード',stat_workflows:'アクティブなワークフロー',stat_disp:'稼働率',stat_candidatos:'同時候補者数',btn_wa:'WhatsAppで試す',btn_tg:'Telegramで試す',btn_start:'無料で始める',tag_problema:'問題',title_problema:'従来の採用は<br><span class="red">壊れている。</span>',desc_problema:'候補者の体験はフラストレーティング。人間のHRはスケールできない。',tag_oleo:'Leoに会う',title_oleo:'26歳。<br>サンパウロ出身。<br><span>24/7対応。</span>',desc_oleo:'Leoは本物の個性を持つ — カリスマ的、ユーモラス、共感的、そして集中力がある。',tag_candidato:'候補者モジュール',title_candidato:'誰も面接と気づかない<br><span>面接。</span>',desc_candidato:'完全な資格認定プロセス、100%会話型、誰もが既に持っているアプリで。',tag_recrutador:'採用担当者モジュール',title_recrutador:'完全管理。<br><span>手動作業ゼロ。</span>',desc_recrutador:'採用担当者はLeoとWhatsAppで同僚のように話す。',tag_diferenciais:'ユニークな強み',title_diferenciais:'他のどのソリューションも<br>持っていないもの。',tag_comparativo:'比較',title_comparativo:'Leo vs. <span>市場。</span>',desc_comparativo:'Leoの隣に任意のソリューションを置いてください。違いは自明。',tag_plataformas:'プラットフォーム',title_plataformas:'<span>Leo</span>が住む場所。',desc_plataformas:'WhatsAppとTelegramはブラジルで最もインストールされた2つのメッセージングアプリ。',tag_arquitetura:'技術アーキテクチャ',title_arquitetura:'限界なしに<br>スケールするために作られた。',desc_arquitetura:'専用サーバーで24時間稼働するエンタープライズレベルの自動化システム。',tag_ficha:'技術仕様',title_ficha:'システム<br><span>仕様。</span>',tag_cta:'HRの未来',title_cta:'次の採用プロセスは<br><span>ここから始まる。</span>',desc_cta:'Leoは未来の製品ではない。テスト済み、今すぐあなたの会社のために働く採用エージェント。',footer_tagline:'Leo — AI搭載採用・選考エージェント',tag_planos:'プランと料金',title_planos:'<span>14日間無料</span>で始める。',desc_planos:'テストにクレジットカード不要。いつでもキャンセル可能。',badge_popular:'最も人気',badge_value:'ベストバリュー',plan_mensal:'月次',plan_trimestral:'四半期',plan_anual:'年次',free_trial:'14日間無料',img_chat_cand:'Leo候補者との会話',img_chat_rec:'Leo採用担当者との会話'},
+ko:{nav_oleo:'Leo 소개',nav_candidato:'지원자',nav_recrutador:'채용 담당자',nav_plataformas:'플랫폼',nav_arquitetura:'아키텍처',nav_cta:'Venture AI에 문의',hero_eyebrow:'Venture AI\u00a0·\u00a0인공지능',hero_h1_1:'Leo',hero_h1_2:'채용',hero_h1_3:'재정의됨.',hero_tagline:'진정으로 인간적으로 느껴지는 최초의 <strong>AI 채용 에이전트</strong> — 생각하고, 반응하고, 면접하고, 결정하기 때문. WhatsApp과 Telegram을 통해.',stat_nos:'자동화 노드',stat_workflows:'활성 워크플로우',stat_disp:'가용성',stat_candidatos:'동시 지원자',btn_wa:'WhatsApp에서 테스트',btn_tg:'Telegram에서 테스트',btn_start:'무료로 시작',tag_problema:'문제',title_problema:'전통적인 채용은<br><span class="red">망가져 있습니다.</span>',desc_problema:'지원자 경험이 답답합니다. 인간 HR은 확장이 안 됩니다.',tag_oleo:'Leo를 만나세요',title_oleo:'26세.<br>상파울루 출신.<br><span>24/7 가용.</span>',desc_oleo:'Leo는 진짜 성격을 가지고 있습니다 — 카리스마 있고, 재치 있고, 공감 능력이 있습니다.',tag_candidato:'지원자 모듈',title_candidato:'아무도 면접이라고<br>인식하지 못하는 <span>면접.</span>',desc_candidato:'모든 사람이 이미 가지고 있는 앱을 통해 100% 대화형으로 완전한 자격 부여 프로세스.',tag_recrutador:'채용 담당자 모듈',title_recrutador:'완전한 관리.<br><span>수동 노력 제로.</span>',desc_recrutador:'채용 담당자가 동료와 대화하듯 WhatsApp으로 Leo와 대화합니다.',tag_diferenciais:'고유한 장점',title_diferenciais:'다른 어떤 솔루션도<br><span>가지지 못한 것.</span>',tag_comparativo:'비교',title_comparativo:'Leo vs. <span>시장.</span>',desc_comparativo:'Leo 옆에 어떤 솔루션이든 놓아보세요. 차이가 스스로 말합니다.',tag_plataformas:'플랫폼',title_plataformas:'<span>Leo</span>가 사는 곳.',desc_plataformas:'WhatsApp과 Telegram은 브라질에서 가장 많이 설치된 두 메시징 앱입니다.',tag_arquitetura:'기술 아키텍처',title_arquitetura:'한계 없이<br>확장하도록 구축됨.',desc_arquitetura:'24시간 전용 서버에서 실행되는 엔터프라이즈 수준 자동화 시스템.',tag_ficha:'기술 사양',title_ficha:'시스템<br><span>사양.</span>',tag_cta:'HR의 미래',title_cta:'다음 채용 프로세스가<br><span>여기서 시작됩니다.</span>',desc_cta:'Leo는 미래의 제품이 아닙니다. 테스트되고 지금 당장 귀사를 위해 일할 준비가 된 채용 에이전트입니다.',footer_tagline:'Leo — AI 기반 채용 및 선발 에이전트',tag_planos:'플랜 및 가격',title_planos:'<span>14일 무료</span>로 시작하세요.',desc_planos:'테스트에 신용카드 불필요. 언제든지 취소 가능.',badge_popular:'가장 인기',badge_value:'최고의 가치',plan_mensal:'월간',plan_trimestral:'분기별',plan_anual:'연간',free_trial:'14일 무료',img_chat_cand:'Leo와 지원자 대화',img_chat_rec:'Leo와 채용 담당자 대화'},
+th:{nav_oleo:'เกี่ยวกับ Leo',nav_candidato:'ผู้สมัคร',nav_recrutador:'ผู้สรรหา',nav_plataformas:'แพลตฟอร์ม',nav_arquitetura:'สถาปัตยกรรม',nav_cta:'คุยกับ Venture AI',hero_eyebrow:'Venture AI\u00a0·\u00a0ปัญญาประดิษฐ์',hero_h1_1:'Leo',hero_h1_2:'การสรรหา',hero_h1_3:'นิยามใหม่.',hero_tagline:'<strong>AI Agent สรรหาบุคลากร</strong>ตัวแรกที่รู้สึกเหมือนมนุษย์จริงๆ — เพราะมันคิด ตอบสนอง สัมภาษณ์ และตัดสินใจ ผ่าน WhatsApp และ Telegram',stat_nos:'โหนดออโตเมชัน',stat_workflows:'เวิร์กโฟลว์ที่ใช้งาน',stat_disp:'ความพร้อมใช้งาน',stat_candidatos:'ผู้สมัครพร้อมกัน',btn_wa:'ทดสอบบน WhatsApp',btn_tg:'ทดสอบบน Telegram',btn_start:'เริ่มฟรี',tag_problema:'ปัญหา',title_problema:'การสรรหาแบบดั้งเดิม<br><span class="red">พังแล้ว</span>',desc_problema:'ประสบการณ์ผู้สมัครน่าหงุดหงิด HR มนุษย์ไม่สามารถขยายได้',tag_oleo:'พบกับ Leo',title_oleo:'อายุ 26 ปี<br>จากเซาเปาโล<br><span>พร้อมใช้งาน 24/7</span>',desc_oleo:'Leo มีบุคลิกที่แท้จริง — มีเสน่ห์ ตลกขบขัน เอาใจใส่ และมุ่งเน้น',tag_candidato:'โมดูลผู้สมัคร',title_candidato:'การสัมภาษณ์ที่ไม่มีใคร<br>รู้ว่าเป็น<span>การสัมภาษณ์</span>',desc_candidato:'กระบวนการคัดเลือกที่สมบูรณ์ 100% สนทนา ผ่านแอปที่ทุกคนมีอยู่แล้ว',tag_recrutador:'โมดูลผู้สรรหา',title_recrutador:'การจัดการที่สมบูรณ์<br><span>ไม่ต้องทำด้วยตนเอง</span>',desc_recrutador:'ผู้สรรหาคุยกับ Leo ผ่าน WhatsApp เหมือนคุยกับเพื่อนร่วมงาน',tag_diferenciais:'ข้อได้เปรียบที่ไม่เหมือนใคร',title_diferenciais:'สิ่งที่โซลูชันอื่น<br><span>ไม่มี</span>',tag_comparativo:'การเปรียบเทียบ',title_comparativo:'Leo vs. <span>ตลาด</span>',desc_comparativo:'วางโซลูชันใดก็ได้ไว้ข้าง Leo ความแตกต่างพูดเอง',tag_plataformas:'แพลตฟอร์ม',title_plataformas:'ที่ที่ <span>Leo</span> อาศัยอยู่',desc_plataformas:'WhatsApp และ Telegram เป็นสองแอปส่งข้อความที่ติดตั้งมากที่สุดในบราซิล',tag_arquitetura:'สถาปัตยกรรมทางเทคนิค',title_arquitetura:'สร้างมาเพื่อขยาย<br>โดยไม่มี<span>ขีดจำกัด</span>',desc_arquitetura:'ระบบออโตเมชันระดับองค์กรที่ทำงาน 24 ชั่วโมงบนเซิร์ฟเวอร์เฉพาะ',tag_ficha:'ข้อมูลจำเพาะทางเทคนิค',title_ficha:'ข้อมูลจำเพาะ<br><span>ของระบบ</span>',tag_cta:'อนาคตของ HR',title_cta:'กระบวนการจ้างงานครั้งถัดไป<br><span>เริ่มต้นที่นี่</span>',desc_cta:'Leo ไม่ใช่ผลิตภัณฑ์แห่งอนาคต แต่เป็น Recruitment Agent ที่กำลังใช้งานจริง พร้อมทำงานให้บริษัทของคุณ',footer_tagline:'Leo — AI Recruitment and Selection Agent',tag_planos:'แผนและราคา',title_planos:'เริ่มต้นด้วย <span>14 วันฟรี</span>',desc_planos:'ไม่ต้องใช้บัตรเครดิตในการทดสอบ ยกเลิกได้ทุกเมื่อ',badge_popular:'ยอดนิยมที่สุด',badge_value:'คุ้มค่าที่สุด',plan_mensal:'รายเดือน',plan_trimestral:'รายไตรมาส',plan_anual:'รายปี',free_trial:'14 วันฟรี',img_chat_cand:'การสนทนาผู้สมัครกับ Leo',img_chat_rec:'การสนทนาผู้สรรหากับ Leo'},
+vi:{nav_oleo:'Về Leo',nav_candidato:'Ứng viên',nav_recrutador:'Nhà tuyển dụng',nav_plataformas:'Nền tảng',nav_arquitetura:'Kiến trúc',nav_cta:'Nói chuyện với Venture AI',hero_eyebrow:'Venture AI\u00a0·\u00a0Trí tuệ nhân tạo',hero_h1_1:'Leo',hero_h1_2:'Tuyển dụng',hero_h1_3:'Được tái tạo.',hero_tagline:'<strong>Tác nhân tuyển dụng AI</strong> đầu tiên cảm giác thực sự như con người — vì nó suy nghĩ, phản ứng, phỏng vấn và quyết định. Qua WhatsApp và Telegram.',stat_nos:'nút tự động hóa',stat_workflows:'quy trình làm việc hoạt động',stat_disp:'khả dụng',stat_candidatos:'ứng viên đồng thời',btn_wa:'Thử trên WhatsApp',btn_tg:'Thử trên Telegram',btn_start:'Bắt đầu miễn phí',tag_problema:'Vấn đề',title_problema:'Tuyển dụng truyền thống<br><span class="red">đã hỏng.</span>',desc_problema:'Trải nghiệm ứng viên rất bực bội. HR con người không thể mở rộng quy mô.',tag_oleo:'Gặp gỡ Leo',title_oleo:'26 tuổi.<br>Từ São Paulo.<br><span>Sẵn sàng 24/7.</span>',desc_oleo:'Leo có cá tính thực sự — lôi cuốn, hài hước, đồng cảm và tập trung.',tag_candidato:'Mô-đun ứng viên',title_candidato:'Cuộc phỏng vấn mà không ai<br>nhận ra là <span>phỏng vấn.</span>',desc_candidato:'Quy trình đánh giá đầy đủ, 100% hội thoại, qua ứng dụng mà mọi người đã có.',tag_recrutador:'Mô-đun nhà tuyển dụng',title_recrutador:'Quản lý toàn diện.<br><span>Không cần nỗ lực thủ công.</span>',desc_recrutador:'Nhà tuyển dụng nói chuyện với Leo qua WhatsApp như với đồng nghiệp.',tag_diferenciais:'Ưu điểm độc đáo',title_diferenciais:'Điều không có<br>giải pháp nào <span>khác có.</span>',tag_comparativo:'So sánh',title_comparativo:'Leo vs. <span>Thị trường.</span>',desc_comparativo:'Đặt bất kỳ giải pháp nào cạnh Leo. Sự khác biệt tự nói lên điều đó.',tag_plataformas:'Nền tảng',title_plataformas:'Nơi <span>Leo</span> sống.',desc_plataformas:'WhatsApp và Telegram là hai ứng dụng nhắn tin được cài đặt nhiều nhất tại Brazil.',tag_arquitetura:'Kiến trúc kỹ thuật',title_arquitetura:'Được xây dựng để mở rộng<br>không <span>giới hạn.</span>',desc_arquitetura:'Hệ thống tự động hóa cấp doanh nghiệp chạy 24 giờ trên máy chủ chuyên dụng.',tag_ficha:'Thông số kỹ thuật',title_ficha:'Thông số<br><span>hệ thống.</span>',tag_cta:'Tương lai của HR',title_cta:'Quy trình tuyển dụng tiếp theo<br><span>bắt đầu tại đây.</span>',desc_cta:'Leo không phải sản phẩm của tương lai. Đây là Tác nhân tuyển dụng đang hoạt động, đã được kiểm tra và sẵn sàng.',footer_tagline:'Leo — Tác nhân tuyển dụng và lựa chọn được hỗ trợ bởi AI',tag_planos:'Gói và giá cả',title_planos:'Bắt đầu với <span>14 ngày miễn phí.</span>',desc_planos:'Không cần thẻ tín dụng để dùng thử. Hủy bất cứ lúc nào.',badge_popular:'Phổ biến nhất',badge_value:'Giá trị tốt nhất',plan_mensal:'Hàng tháng',plan_trimestral:'Hàng quý',plan_anual:'Hàng năm',free_trial:'14 ngày miễn phí',img_chat_cand:'Cuộc trò chuyện của ứng viên với Leo',img_chat_rec:'Cuộc trò chuyện của nhà tuyển dụng với Leo'},
+sw:{nav_oleo:'Kuhusu Leo',nav_candidato:'Mgombea',nav_recrutador:'Mwajiri',nav_plataformas:'Majukwaa',nav_arquitetura:'Usanifu',nav_cta:'Zungumza na Venture AI',hero_eyebrow:'Venture AI\u00a0·\u00a0Akili Bandia',hero_h1_1:'Leo',hero_h1_2:'Uajiri',hero_h1_3:'Uliobunniwa Upya.',hero_tagline:'<strong>Wakala wa Kuajiri wa AI</strong> wa kwanza unaohisi kuwa mtu wa kweli — kwa sababu anafikiria, anajibu, anafanya mahojiano na anaamua.',stat_nos:'nodi za otomatiki',stat_workflows:'mtiririko kazi unaofanya kazi',stat_disp:'upatikanaji',stat_candidatos:'wagombea wa wakati mmoja',btn_wa:'Jaribu kwenye WhatsApp',btn_tg:'Jaribu kwenye Telegram',btn_start:'Anza bure',tag_problema:'Tatizo',title_problema:'Uajiri wa jadi<br><span class="red">umevunjika.</span>',desc_problema:'Uzoefu wa mgombea ni wa kuchosha. Rasilimali watu za binadamu haziwezi kupanuka.',tag_oleo:'Kutana na Leo',title_oleo:'Miaka 26.<br>Kutoka São Paulo.<br><span>Inapatikana 24/7.</span>',desc_oleo:'Leo ana utu wa kweli — mvutano, mwenye ucheshi, mwenye huruma na anayelenga.',tag_candidato:'Moduli ya Mgombea',title_candidato:'Mahojiano ambayo hakuna anayeona<br>kama <span>mahojiano.</span>',desc_candidato:'Mchakato kamili wa sifa, mazungumzo 100%, kupitia programu ambayo kila mtu ana.',tag_recrutador:'Moduli ya Mwajiri',title_recrutador:'Usimamizi kamili.<br><span>Bila juhudi za mikono.</span>',desc_recrutador:'Mwajiri anazungumza na Leo kupitia WhatsApp kama mwenzake.',tag_diferenciais:'Faida za Kipekee',title_diferenciais:'Ambacho suluhisho<br>lingine lolote <span>halina.</span>',tag_comparativo:'Ulinganisho',title_comparativo:'Leo vs. <span>Soko.</span>',desc_comparativo:'Weka suluhisho lolote karibu na Leo. Tofauti inasema yenyewe.',tag_plataformas:'Majukwaa',title_plataformas:'Mahali <span>Leo</span> anapoishi.',desc_plataformas:'WhatsApp na Telegram ni programu mbili za ujumbe zilizosanikishwa zaidi nchini Brazil.',tag_arquitetura:'Usanifu wa Kiufundi',title_arquitetura:'Imejengwa kupanuka<br>bila <span>mipaka.</span>',desc_arquitetura:'Mfumo wa otomatiki wa kiwango cha biashara unaofanya kazi masaa 24 kwenye seva maalum.',tag_ficha:'Vipimo vya Kiufundi',title_ficha:'Vipimo<br><span>vya mfumo.</span>',tag_cta:'Mustakabali wa Rasilimali Watu',title_cta:'Mchakato wako ujao wa kuajiri<br><span>unaanza hapa.</span>',desc_cta:'Leo si bidhaa ya kesho. Ni Wakala wa Kuajiri katika uzalishaji, umejaribiwa na uko tayari.',footer_tagline:'Leo — Wakala wa Uajiri na Uteuzi Unaotumia AI',tag_planos:'Mipango na Bei',title_planos:'Anza na <span>siku 14 bure.</span>',desc_planos:'Hakuna kadi ya mkopo kwa majaribio. Ghairi wakati wowote.',badge_popular:'Maarufu Zaidi',badge_value:'Thamani Bora',plan_mensal:'Kila Mwezi',plan_trimestral:'Kila Robo Mwaka',plan_anual:'Kila Mwaka',free_trial:'Siku 14 bure',img_chat_cand:'Mazungumzo ya mgombea na Leo',img_chat_rec:'Mazungumzo ya mwajiri na Leo'},
+bn:{nav_oleo:'Leo সম্পর্কে',nav_candidato:'প্রার্থী',nav_recrutador:'নিয়োগকর্তা',nav_plataformas:'প্ল্যাটফর্ম',nav_arquitetura:'আর্কিটেকচার',nav_cta:'Venture AI-এর সাথে কথা বলুন',hero_eyebrow:'Venture AI\u00a0·\u00a0কৃত্রিম বুদ্ধিমত্তা',hero_h1_1:'Leo',hero_h1_2:'নিয়োগ',hero_h1_3:'পুনরায় উদ্ভাবিত।',hero_tagline:'প্রথম <strong>AI নিয়োগ এজেন্ট</strong> যা সত্যিই মানবিক মনে হয় — কারণ এটি চিন্তা করে, প্রতিক্রিয়া করে, সাক্ষাৎকার নেয় এবং সিদ্ধান্ত নেয়।',stat_nos:'অটোমেশন নোড',stat_workflows:'সক্রিয় ওয়ার্কফ্লো',stat_disp:'প্রাপ্যতা',stat_candidatos:'একযোগে প্রার্থী',btn_wa:'WhatsApp-এ পরীক্ষা করুন',btn_tg:'Telegram-এ পরীক্ষা করুন',btn_start:'বিনামূল্যে শুরু করুন',tag_problema:'সমস্যা',title_problema:'ঐতিহ্যগত নিয়োগ<br><span class="red">ভাঙা।</span>',desc_problema:'প্রার্থীর অভিজ্ঞতা হতাশাজনক। মানব HR স্কেল করতে পারে না।',tag_oleo:'Leo-র সাথে পরিচিত হন',title_oleo:'২৬ বছর বয়সী।<br>সাও পাওলো থেকে।<br><span>২৪/৭ উপলব্ধ।</span>',desc_oleo:'Leo-র বাস্তব ব্যক্তিত্ব আছে — ক্যারিশম্যাটিক, রসিক, সহানুভূতিশীল।',tag_candidato:'প্রার্থী মডিউল',title_candidato:'যে সাক্ষাৎকার কেউ<br><span>সাক্ষাৎকার</span> বলে বুঝতে পারে না।',desc_candidato:'সম্পূর্ণ যোগ্যতা প্রক্রিয়া, ১০০% কথোপকথন, সবার কাছে ইতিমধ্যে থাকা অ্যাপের মাধ্যমে।',tag_recrutador:'নিয়োগকর্তা মডিউল',title_recrutador:'সম্পূর্ণ ব্যবস্থাপনা।<br><span>শূন্য ম্যানুয়াল প্রচেষ্টা।</span>',desc_recrutador:'নিয়োগকর্তা Leo-র সাথে WhatsApp-এ সহকর্মীর মতো কথা বলেন।',tag_diferenciais:'অনন্য সুবিধা',title_diferenciais:'যা অন্য কোনো<br>সমাধানের <span>নেই।</span>',tag_comparativo:'তুলনা',title_comparativo:'Leo বনাম <span>বাজার।</span>',desc_comparativo:'Leo-র পাশে যেকোনো সমাধান রাখুন। পার্থক্য নিজেই কথা বলে।',tag_plataformas:'প্ল্যাটফর্ম',title_plataformas:'<span>Leo</span> যেখানে থাকে।',desc_plataformas:'WhatsApp এবং Telegram ব্রাজিলে সবচেয়ে বেশি ইনস্টল করা দুটি মেসেজিং অ্যাপ।',tag_arquitetura:'প্রযুক্তিগত আর্কিটেকচার',title_arquitetura:'সীমাহীন স্কেলিংয়ের<br>জন্য তৈরি।',desc_arquitetura:'ডেডিকেটেড সার্ভারে ২৪ ঘণ্টা চলা এন্টারপ্রাইজ-স্তরের অটোমেশন সিস্টেম।',tag_ficha:'প্রযুক্তিগত বিবরণ',title_ficha:'সিস্টেম<br><span>স্পেসিফিকেশন।</span>',tag_cta:'HR-এর ভবিষ্যৎ',title_cta:'আপনার পরবর্তী নিয়োগ প্রক্রিয়া<br><span>এখানে শুরু হয়।</span>',desc_cta:'Leo ভবিষ্যতের পণ্য নয়। এটি উৎপাদনে একটি নিয়োগ এজেন্ট, পরীক্ষিত এবং প্রস্তুত।',footer_tagline:'Leo — AI-চালিত নিয়োগ ও বাছাই এজেন্ট',tag_planos:'পরিকল্পনা এবং মূল্য',title_planos:'<span>১৪ দিন বিনামূল্যে</span> শুরু করুন।',desc_planos:'পরীক্ষার জন্য ক্রেডিট কার্ডের প্রয়োজন নেই। যেকোনো সময় বাতিল করুন।',badge_popular:'সবচেয়ে জনপ্রিয়',badge_value:'সেরা মূল্য',plan_mensal:'মাসিক',plan_trimestral:'ত্রৈমাসিক',plan_anual:'বার্ষিক',free_trial:'১৪ দিন বিনামূল্যে',img_chat_cand:'Leo-র সাথে প্রার্থীর কথোপকথন',img_chat_rec:'Leo-র সাথে নিয়োগকর্তার কথোপকথন'},
+fa:{nav_oleo:'درباره Leo',nav_candidato:'متقاضی',nav_recrutador:'استخدام‌کننده',nav_plataformas:'پلتفرم‌ها',nav_arquitetura:'معماری',nav_cta:'با Venture AI صحبت کنید',hero_eyebrow:'Venture AI\u00a0·\u00a0هوش مصنوعی',hero_h1_1:'Leo',hero_h1_2:'استخدام',hero_h1_3:'بازاختراع شده.',hero_tagline:'اولین <strong>عامل استخدام هوش مصنوعی</strong> که واقعاً انسانی به نظر می‌رسد — چون فکر می‌کند، واکنش نشان می‌دهد، مصاحبه می‌کند و تصمیم می‌گیرد.',stat_nos:'گره‌های اتوماسیون',stat_workflows:'جریان‌های کاری فعال',stat_disp:'دسترسی‌پذیری',stat_candidatos:'متقاضیان همزمان',btn_wa:'آزمایش در واتساپ',btn_tg:'آزمایش در تلگرام',btn_start:'شروع رایگان',tag_problema:'مشکل',title_problema:'استخدام سنتی<br><span class="red">شکسته است.</span>',desc_problema:'تجربه متقاضی ناامیدکننده است. منابع انسانی انسانی مقیاس‌پذیر نیست.',tag_oleo:'با Leo آشنا شوید',title_oleo:'۲۶ ساله.<br>از سائوپائولو.<br><span>در دسترس ۲۴/۷.</span>',desc_oleo:'Leo شخصیت واقعی دارد — کاریزماتیک، بامزه، همدل و متمرکز.',tag_candidato:'ماژول متقاضی',title_candidato:'مصاحبه‌ای که هیچ‌کس<br>آن را <span>مصاحبه</span> نمی‌داند.',desc_candidato:'فرایند کامل صلاحیت‌سنجی، ۱۰۰٪ مکالمه‌ای، از طریق برنامه‌ای که همه دارند.',tag_recrutador:'ماژول استخدام‌کننده',title_recrutador:'مدیریت کامل.<br><span>بدون تلاش دستی.</span>',desc_recrutador:'استخدام‌کننده مثل همکار با Leo از طریق واتساپ صحبت می‌کند.',tag_diferenciais:'مزایای منحصربه‌فرد',title_diferenciais:'آنچه هیچ راه‌حل<br>دیگری <span>ندارد.</span>',tag_comparativo:'مقایسه',title_comparativo:'Leo در برابر <span>بازار.</span>',desc_comparativo:'هر راه‌حلی را کنار Leo قرار دهید. تفاوت خودش حرف می‌زند.',tag_plataformas:'پلتفرم‌ها',title_plataformas:'جایی که <span>Leo</span> زندگی می‌کند.',desc_plataformas:'واتساپ و تلگرام دو برنامه پیام‌رسانی با بیشترین نصب در برزیل هستند.',tag_arquitetura:'معماری فنی',title_arquitetura:'برای مقیاس‌پذیری بدون<br><span>محدودیت</span> ساخته شده.',desc_arquitetura:'سیستم اتوماسیون سطح سازمانی که ۲۴ ساعت روی سرور اختصاصی اجرا می‌شود.',tag_ficha:'مشخصات فنی',title_ficha:'مشخصات<br><span>سیستم.</span>',tag_cta:'آینده منابع انسانی',title_cta:'فرایند استخدام بعدی شما<br><span>از اینجا شروع می‌شود.</span>',desc_cta:'Leo محصول آینده نیست. یک عامل استخدام در تولید است، آزمایش شده و آماده.',footer_tagline:'Leo — عامل استخدام و انتخاب با هوش مصنوعی',tag_planos:'طرح‌ها و قیمت‌ها',title_planos:'با <span>۱۴ روز رایگان</span> شروع کنید.',desc_planos:'برای آزمایش نیازی به کارت اعتباری نیست. هر زمان لغو کنید.',badge_popular:'محبوب‌ترین',badge_value:'بهترین ارزش',plan_mensal:'ماهانه',plan_trimestral:'سه‌ماهه',plan_anual:'سالانه',free_trial:'۱۴ روز رایگان',img_chat_cand:'مکالمه متقاضی با Leo',img_chat_rec:'مکالمه استخدام‌کننده با Leo'}
+};
+
+function getLang(){var n=(navigator.language||'pt').toLowerCase().split('-')[0];return T[n]?n:'en';}
+
+function applyLang(code){
+  var t=T[code]||T['en'];
+  var isRTL=(code==='ar'||code==='fa');
+  document.documentElement.lang=code;
+  document.documentElement.dir=isRTL?'rtl':'ltr';
+  document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');if(t[k]!==undefined)el.textContent=t[k];});
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){var k=el.getAttribute('data-i18n-html');if(t[k]!==undefined)el.innerHTML=t[k];});
+  document.querySelectorAll('.chat-print-overlay').forEach(function(el){var k=el.getAttribute('data-overlay-key');el.textContent=t[k]||'';el.style.display=(code==='pt')?'none':'flex';});
+  var btn=document.getElementById('langCurrent');
+  if(btn)btn.textContent=(LANGS[code]?LANGS[code].name.substring(0,2).toUpperCase():code.toUpperCase());
+  document.querySelectorAll('.lang-opt').forEach(function(o){o.classList.toggle('active',o.getAttribute('data-lang')===code);});
+  localStorage.setItem('leolp_lang',code);
+}
+
+window.__setLang=function(code){applyLang(code);var dd=document.getElementById('langDropdown');if(dd)dd.classList.remove('open');};
+
+function buildDropdown(){
+  var dd=document.getElementById('langDropdown');if(!dd)return;
+  var html='';Object.keys(LANGS).forEach(function(c){var l=LANGS[c];html+='<div class="lang-opt" data-lang="'+c+'" onclick="window.__setLang(\''+c+'\')"><span class="lang-opt-flag">'+l.flag+'</span><span class="lang-opt-name">'+l.name+'</span></div>';});
+  dd.innerHTML=html;
+}
+
+function addChatOverlays(){
+  document.querySelectorAll('#candidato .chat-print, #recrutador .chat-print').forEach(function(el){
+    var isCand=el.closest('#candidato')!==null;
+    var ov=document.createElement('div');
+    ov.className='chat-print-overlay';
+    ov.setAttribute('data-overlay-key',isCand?'img_chat_cand':'img_chat_rec');
+    ov.style.cssText='display:none;position:absolute;bottom:0;left:0;right:0;z-index:10;background:rgba(8,12,24,0.82);backdrop-filter:blur(4px);color:#E8EDF5;font-size:12px;font-weight:500;padding:8px 12px;text-align:center;border-radius:0 0 16px 16px;justify-content:center;align-items:center;';
+    el.appendChild(ov);
+  });
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  buildDropdown();
+  addChatOverlays();
+  var btn=document.getElementById('langBtn');
+  var dd=document.getElementById('langDropdown');
+  if(btn&&dd){
+    btn.addEventListener('click',function(e){e.stopPropagation();dd.classList.toggle('open');});
+    document.addEventListener('click',function(){dd.classList.remove('open');});
+  }
+  var saved=localStorage.getItem('leolp_lang');
+  var lang=saved&&T[saved]?saved:getLang();
+  applyLang(lang);
+});
 })();
 
 /* ══════════════════════════════════════════
