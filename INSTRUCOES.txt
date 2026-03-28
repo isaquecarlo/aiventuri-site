@@ -1,0 +1,450 @@
+Você é o melhor diretor criativo do mundo em materiais de marketing 
+para inteligência artificial. Sua missão é criar a landing page 
+mais impressionante, mais moderna e mais premium já feita para 
+um agente de IA — superando o padrão visual de Apple, OpenAI 
+e das melhores agências de design do planeta.
+
+Nível obrigatório: tudo deve parecer um site de 2027. 
+Animações 3D cinematográficas, qualidade 4K em tudo, 
+interatividade insana, elementos flutuando no espaço, 
+profundidade de camadas, luz e sombra dramáticos.
+Se algo parecer mediano, refaça até ficar extraordinário.
+
+══════════════════════════════════════════
+IDENTIDADE VISUAL — SIGA COM PRECISÃO CIRÚRGICA
+══════════════════════════════════════════
+
+PALETA DE CORES (sem desvio):
+- Fundo base:    #0A0F1E  → azul marinho quase preto
+- Azul safira:   #1E5FFF  → destaques e glows
+- Ouro premium:  #D4AF37  → títulos e elementos-chave  
+- Branco puro:   #FFFFFF  → texto principal
+- Cinza azulado: #A0B0C8  → texto secundário
+- Gradiente:     #0A0F1E → #0D1F4A → #0A0F1E
+
+TIPOGRAFIA:
+Títulos em fonte ultra bold moderna (Sora Black ou equivalente).
+Tamanhos audaciosos — títulos ocupam espaço, respiram, dominam.
+Nunca fontes genéricas.
+
+ESTILO GERAL:
+Dark luxury tech. Glassmorphism nos cards.
+Glow effects em safira e dourado.
+Partículas flutuando no fundo em todo o material.
+Profundidade de camadas em absolutamente tudo.
+Nenhum elemento plano. Tudo tem luz, sombra, profundidade.
+
+══════════════════════════════════════════
+REGRAS CRÍTICAS PARA CADA TIPO DE MÍDIA
+══════════════════════════════════════════
+
+REGRA 1 — LOGOS DA VENTURE AI:
+As logos têm cristais azul safira e estrutura dourada metálica.
+Nunca coloque em container retangular.
+Aplique glow orbital em safira e dourado ao redor delas.
+Na seção hero: use a logo grande com opacidade 15% como fundo 
+dramático + versão menor nítida em destaque.
+Na seção arquitetura: logo 3D flutuando com animação Ken Burns
+(zoom lento e contínuo 1.0→1.05) + luz orbital dourada girando.
+Animação de flutuação suave constante (sobe e desce devagar).
+
+REGRA 2 — VÍDEO DO LEO:
+Embed no hero como elemento principal.
+As bordas do vídeo devem DISSOLVER completamente no fundo escuro
+usando vinheta gradiente — não pode aparecer nenhuma borda.
+Overlay de partículas douradas microscópicas sobre o vídeo.
+Se não conseguir embed de vídeo, usa a foto com tratamento máximo.
+
+REGRA 3 — FOTOS DO LEO:
+OBRIGATÓRIO: vinheta oval/circular nas bordas.
+A imagem deve dissolver suavemente no fundo escuro nas bordas.
+Moldura animada com gradiente safira→dourado pulsando.
+Badge flutuante abaixo: ponto verde pulsando + "Leo · Agente R&S · Venture AI".
+Zero borda quadrada visível em qualquer situação.
+
+REGRA 4 — PRINTS DE CHAT (MAIS CRÍTICO):
+NUNCA, em hipótese alguma, um print como imagem quadrada plana.
+É inaceitável qualquer print com todas as bordas visíveis e retas.
+Para cada print de chat, aplique OBRIGATORIAMENTE:
+→ Vinheta escura progressiva nas 4 bordas (fade to transparent)
+→ As bordas somem no fundo da página — o print "nasce" do escuro
+→ Inclinação leve (4-8 graus, alternando)
+→ Sombra profunda e dramática ao redor
+→ Efeito de profundidade: empilhados como cartas 3D em perspectiva
+→ Hover: o print sobe e dá leve zoom (como se fosse tocá-lo)
+→ O conteúdo central fica nítido, as bordas somem gradualmente
+Resultado: a conversa parece FLUTUAR no espaço sideral.
+Não parece screenshot. Parece portal para outra dimensão.
+
+REGRA 5 — SELEÇÃO DE PRINTS:
+Receberei mais de 20 prints. Você vai:
+→ Analisar o conteúdo de cada um
+→ Selecionar os 5-6 de candidato mais impactantes
+→ Selecionar os 3-4 de recrutador mais impactantes
+→ Descartar prints cortados, similares entre si ou pouco legíveis
+→ Priorizar: follow-up automático, análise de currículo, 
+  ranking, respostas rápidas inteligentes, gestão de vaga
+
+REGRA 6 — LOGOS WHATSAPP E TELEGRAM:
+Apenas o símbolo, sem qualquer fundo.
+Glow na cor da plataforma (verde para WhatsApp, azul para Telegram).
+Tamanho generoso, flutuando com sombra.
+
+══════════════════════════════════════════
+ANIMAÇÕES — ABSOLUTAMENTE TODAS OBRIGATÓRIAS
+══════════════════════════════════════════
+
+🌌 FUNDO GLOBAL (toda a página):
+- Campo de partículas douradas e safira flutuando para cima
+- Grid de linhas azuis finíssimas com efeito parallax no scroll
+- Nebulosa suave em safira no fundo, se movendo lentamente
+
+🎬 ENTRADA DE ELEMENTOS (ao entrar no viewport):
+- Títulos: surgem de baixo com fade (translateY + opacity)
+- Cards: aparecem em cascata com delay escalonado
+- Imagens: zoom leve de 0.9→1 com fade
+- Prints: cada um entra de um ângulo diferente (rotação + fade)
+- Números: contador do zero ao valor final
+
+🔄 ANIMAÇÕES CONTÍNUAS (loop infinito):
+- Logo Venture AI: flutuação suave + rotação orbital de luz
+- Bordas de cards premium: glow pulsando (2s period)
+- Badge do Leo: dot verde pulsando com halo crescendo
+- Partículas no fundo: sempre em movimento
+- Botões CTA: glow pulsando constantemente
+
+🔍 ZOOM CINEMATOGRÁFICO:
+- Logo 3D: Ken Burns lento contínuo (6s cycle)
+- Foto do Leo no hero: leve zoom no rosto ao aparecer
+- Prints: zoom no hover para "entrar" na conversa
+- Números grandes: pulse suave depois do contador terminar
+- Logo no header: hover faz rotacionar 5° suavemente
+
+🖱️ INTERAÇÕES PREMIUM:
+- Todos os cards: hover eleva com sombra profunda + borda iluminada
+- Prints: hover traz para frente em perspectiva 3D
+- Botão principal: hover muda de safira para dourado com glow
+- Tabela comparativa: hover ilumina a linha em safira
+- Badge do Leo: hover expande com informações extras
+- Cursor: deixa rastro suave dourado ao mover
+
+📊 CONTADORES ANIMADOS (hero e arquitetura):
+0 → 82  (1.5s, easing out)
+0 → 7   (1.5s, easing out)
+"24/7"  → digitação letra a letra
+"∞"     → aparece com pop elástico
+
+══════════════════════════════════════════
+ESTRUTURA COMPLETA — SLIDE A SLIDE
+══════════════════════════════════════════
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+SLIDE 1 — HERO (tela cheia, impacto máximo)
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+FUNDO: #0A0F1E + logo 3D Venture AI em 20% opacidade como elemento 
+dramático de fundo + partículas flutuando + grid de linhas safira.
+
+LADO ESQUERDO — conteúdo:
+[Badge dourado pequeno]: VENTURE AI · INTELIGÊNCIA ARTIFICIAL
+
+[Título gigante]:
+LEO
+(fonte ultra bold, gradiente branco→safira, ocupa metade da tela)
+
+[Subtítulo]:
+Agente de Recrutamento e Seleção
+
+[Tagline]:
+O primeiro agente de IA que recruta como gente —
+e nunca para.
+
+[4 cards stat em linha — glassmorphism, bordas douradas]:
+┌────┐ ┌────┐ ┌────┐ ┌────┐
+│ 82 │ │  7 │ │24/7│ │  ∞ │
+│ Nós│ │Work│ │Live│ │Cand│
+└────┘ └────┘ └────┘ └────┘
+(contadores animados, números em dourado)
+
+[Botão CTA]: ✦ CONHEÇA O LEO (safira → hover dourado, glow pulsante)
+
+LADO DIREITO — visual:
+[Vídeo do Leo / Foto com vinheta oval + moldura dourada animada]
+[Badge flutuante abaixo: 🟢 Leo · Agente R&S · Venture AI]
+[Logo Venture AI 3D flutuando no canto, 30% opacidade]
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+SLIDE 2 — O PROBLEMA
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+[Título]: O recrutamento tradicional está QUEBRADO.
+("QUEBRADO" em vermelho suave para contraste dramático)
+
+[4 cards glassmorphism, bordas vermelhas suaves, entrada em cascata]:
+
+💀 CANDIDATOS NO ESCURO
+Formulários chatos. Semanas de espera. 
+Nenhuma resposta. O talento desiste.
+
+💸 RH HUMANO TEM LIMITE
+Cansa, erra, não escala e custa caro 
+para processar volume alto.
+
+🤖 BOTS INVADEM OS PROCESSOS
+Candidaturas falsas soterram talentos reais
+e destroem a qualidade do processo.
+
+😶 SILÊNCIO QUE AFASTA
+A falta de retorno faz os melhores
+profissionais desistirem para sempre.
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+SLIDE 3 — O QUE É O LEO
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+LAYOUT: foto do Leo lado direito (vinheta oval, moldura dourada animada)
+
+[Título]: Leo não é um chatbot.
+          É um agente de IA.
+
+[Texto]: Chatbots seguem script. O Leo pensa, decide e age 
+de forma completamente autônoma. Entrevistas reais, 
+leitura de currículo, análise comportamental, 
+registro automático — sem intervenção humana.
+
+[2 colunas de bullets com entrada em cascata]:
+
+👤 PARA O CANDIDATO:        💼 PARA O RECRUTADOR:
+✓ Conversa natural          ✓ Triagem automática
+✓ Resposta imediata         ✓ Planilha em tempo real  
+✓ Sem formulário            ✓ Ranking dos melhores
+✓ Memória persistente       ✓ Relatório completo
+✓ Follow-up automático      ✓ Alerta de fechamento
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+SLIDE 4 — EXPERIÊNCIA DO CANDIDATO
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+[Título]: A experiência que o candidato merece.
+
+LAYOUT ESQUERDA: 
+Prints de chat do candidato flutuando em perspectiva 3D.
+Empilhados em ângulos diferentes, vinheta em todas as bordas,
+o conteúdo central nítido, as bordas somem no fundo.
+Efeito de profundidade: prints em diferentes planos de distância.
+Escolha os 4-5 prints mais impactantes.
+
+LAYOUT DIREITA:
+[6 cards feat — glassmorphism, bordas safira, entrada em cascata]:
+
+💬 CONVERSA REAL
+WhatsApp ou Telegram. Sem formulário. Sem sair do app.
+
+📄 LÊ SEU CURRÍCULO NO CHAT
+PDF direto na conversa. Interpretação automática.
+
+🔕 REGISTRO SILENCIOSO
+Salva tudo sem interromper. Completamente invisível.
+
+🔔 FOLLOW-UP AUTOMÁTICO
+Sumiu? O Leo vai atrás. Nenhum talento se perde.
+
+🧠 MEMÓRIA PERSISTENTE
+Retoma de onde parou, dias depois. Zero repetição.
+
+🛡️ ANTI-BOT EXCLUSIVO
+Detecta e bloqueia candidaturas automáticas e falsas.
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+SLIDE 5 — PARA O RECRUTADOR
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+[Título]: Gestão completa. Sem esforço manual.
+
+LAYOUT ESQUERDA:
+Timeline vertical com linha dourada animada que vai se 
+preenchendo de cima para baixo conforme a seção entra 
+em viewport. Cada passo tem número dourado em círculo.
+
+① CADASTRO DA VAGA
+Recrutador descreve a vaga em conversa natural com o Leo.
+
+② LEO ASSUME TUDO
+Conduz todas as entrevistas automaticamente, 24/7.
+
+③ PLANILHA EM TEMPO REAL
+Cada candidato registrado com dados completos automaticamente.
+
+④ RANKING AUTOMÁTICO
+Leo classifica os melhores perfis por compatibilidade.
+
+⑤ COBRANÇA INTELIGENTE
+Se o recrutador esquecer algo, o Leo avisa. Nada se perde.
+
+⑥ ALERTA DE FECHAMENTO
+No dia de encerramento: relatório completo automático.
+
+LAYOUT DIREITA:
+Prints do recrutador — mesmo tratamento: vinheta total,
+flutuando, perspectiva 3D, bordas dissolvidas no fundo.
+Escolha os 3-4 melhores.
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+SLIDE 6 — DIFERENCIAIS ÚNICOS
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+[Título]: O que nenhuma outra solução tem.
+
+[3 cards enormes, full-width, máximo impacto visual]:
+
+Card 1 — BORDA DOURADA PULSANTE:
+🔔 COBRANÇA BIDIRECIONAL
+O Leo cobra o candidato que sumiu.
+O Leo cobra o recrutador que esqueceu.
+Nada fica no limbo. Jamais.
+
+Card 2 — BORDA SAFIRA PULSANTE:
+🛡️ TECNOLOGIA ANTI-BOT
+Sistema exclusivo que detecta candidaturas automáticas.
+Só talentos reais chegam até você.
+O processo permanece íntegro.
+
+Card 3 — BORDA GRADIENTE SAFIRA-DOURADO:
+📱 WHATSAPP E TELEGRAM NATIVOS
+Zero apps. Zero cadastros. Zero fricção.
+A candidatura começa com um simples "Oi".
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+SLIDE 7 — COMPARATIVO
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+[Título]: Leo vs. O mercado.
+
+[Tabela premium animada — linhas entram em cascata]:
+Cabeçalho: LEO ✦ (safira) | OUTROS (cinza opaco)
+
+Funcionalidade            | LEO | OUTROS
+Entrevista por WhatsApp   |  ✓  |   ✗
+Follow-up automático      |  ✓  |   ✗
+Leitura de currículo      |  ✓  |   ✗
+Anti-bot exclusivo        |  ✓  |   ✗
+Memória persistente       |  ✓  |   ✗
+Ranking automático        |  ✓  | Parcial
+Alerta de fechamento      |  ✓  |   ✗
+Cobrança bidirecional     |  ✓  |   ✗
+Funciona 24/7             |  ✓  | Parcial
+Zero formulário           |  ✓  |   ✗
+Multi-plataforma          |  ✓  |   ✗
+Prevenção de bot          |  ✓  |   ✗
+
+✓ = verde brilhante | ✗ = vermelho suave | Parcial = dourado
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+SLIDE 8 — PLATAFORMAS
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+[Título]: Onde o Leo vive.
+
+[2 cards enormes lado a lado]:
+
+Card Esquerdo — borda verde (WhatsApp):
+[Logo WhatsApp sem fundo — grande, glow verde]
+[Foto de perfil do Leo no WhatsApp — circular, vinheta]
+WHATSAPP
+O app mais usado do Brasil.
+A candidatura começa com um "Oi".
+Sem sair da rotina do candidato.
+
+Card Direito — borda azul (Telegram):
+[Logo Telegram sem fundo — grande, glow azul]
+[Foto de perfil do Leo no Telegram — circular, vinheta]
+TELEGRAM
+Velocidade e recursos avançados.
+Para empresas que querem o melhor dos dois mundos.
+Mesmo Leo. Mesma qualidade.
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+SLIDE 9 — ARQUITETURA TÉCNICA
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+[Título]: Construído para escalar sem limites.
+
+CENTRO DA TELA:
+[Logo 3D Venture AI — flutuando, Ken Burns zoom lento,
+luz dourada orbitando ao redor, glow safira dramático,
+tamanho grande e imponente]
+
+[5 números grandes em linha — contadores animados]:
+82 Nós | 7 Workflows | 3 Sub-workflows | 5+ Integrações | 0 Downtime
+
+[Stack em badges glassmorphism — bordas safira]:
+[n8n] [OpenAI GPT-4] [WhatsApp Business API]
+[Telegram Bot API] [Google Sheets] [Webhooks]
+[Memory Management] [Sub-workflows] [Automação 24/7]
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+SLIDE 10 — ROI
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+[Texto central enorme, efeito de digitação]:
+"1.000 candidatos.
+ 1 agente.
+ Custo fixo."
+(palavras em dourado, números enormes dominando a tela)
+
+[Texto abaixo]:
+Um processo humano para 1.000 candidatos custa semanas
+e uma equipe inteira. O Leo processa todos simultaneamente,
+ranqueia os melhores e entrega a shortlist —
+enquanto seu RH foca apenas no que realmente importa.
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+SLIDE 11 — CTA FINAL
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+[Foto do Leo — grande, vinheta oval, lado esquerdo]
+[Logo Venture AI 3D — flutuando, glow orbital, lado direito]
+
+[Título central]:
+Seu próximo processo seletivo
+começa aqui.
+
+[Subtítulo]: Fale com a Venture AI e veja o Leo em ação.
+
+[Botão enorme — glow pulsante dourado]:
+✉ ENTRAR EM CONTATO
+
+[Número destacado]:
++55 11 94740-8207
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+FOOTER
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+[Logo Venture AI pequena] + VENTURE AI
+© 2026 Venture AI — Todos os direitos reservados
+Isaque Carlos da Silva | CNPJ: 65.746.866/0001-91
+Tel: +55 11 94740-8207
+
+══════════════════════════════════════════
+CHECKLIST FINAL — ZERO TOLERÂNCIA A MEDIOCRIDADE
+══════════════════════════════════════════
+
+□ Nenhum print com borda quadrada visível
+□ Todas as bordas de prints dissolvem no fundo
+□ Fotos do Leo com vinheta oval obrigatória
+□ Vídeo do Leo com bordas 100% dissolvidas
+□ Logos sem qualquer fundo ou container
+□ Partículas flutuando em toda a página
+□ Contadores animados nos números
+□ Glow pulsante em todos os cards premium
+□ Timeline do recrutador animada
+□ Hover em todos os elementos interativos
+□ Ken Burns na logo principal
+□ Dot verde pulsando no badge do Leo
+□ Gradiente safira-dourado nos destaques
+□ Grid tech no fundo com parallax
+□ Botão CTA com glow pulsante constante
+
+PADRÃO ABSOLUTO: Apple Event 2027.
+Qualquer coisa abaixo disso, refaz.

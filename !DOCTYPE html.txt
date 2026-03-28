@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leo — Agente de Recrutamento e Seleção da Venture AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+:root {
+  --navy:#07101f; --navy2:#0c1628; --card:#0f1a30;
+  --gold:#c9a84c; --gold2:#dfc06a; --gold3:#f0d98a;
+  --sap:#1e3a8a; --sap2:#2d55b8; --sap3:#5a82e8;
+  --text:#e8e0d0; --text2:#8a8272; --text3:#4a4038;
+  --b1:rgba(201,168,76,.12); --b2:rgba(201,168,76,.32);
+  --glow:0 0 60px rgba(201,168,76,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--text);overflow-x:hidden}
+
+/* ── 3D HERO CANVAS ── */
+#hero-canvas{
+  position:absolute;inset:0;z-index:0;
+  width:100%;height:100%;pointer-events:none;
+}
+
+/* ── GRID ── */
+.bg-grid{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(201,168,76,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,168,76,.035) 1px,transparent 1px);
+  background-size:64px 64px;
+}
+
+/* ── GLOW ORBS ── */
+.orb{position:fixed;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0;animation:orbf var(--t) ease-in-out infinite alternate}
+.o1{width:700px;height:700px;background:radial-gradient(circle,rgba(30,58,138,.3),transparent 70%);top:-20%;right:-15%;--t:14s}
+.o2{width:500px;height:500px;background:radial-gradient(circle,rgba(201,168,76,.07),transparent 70%);bottom:5%;left:-10%;--t:18s}
+.o3{width:350px;height:350px;background:radial-gradient(circle,rgba(45,85,184,.18),transparent 70%);top:45%;left:25%;--t:11s}
+@keyframes orbf{from{transform:translate(0,0) scale(1)}to{transform:translate(30px,20px) scale(1.08)}}
+
+/* ── CONTENT LAYER ── */
+.wrap{position:relative;z-index:2}
+.container{max-width:1000px;margin:0 auto;padding:0 32px}
+section{padding:100px 0;position:relative;z-index:2}
+
+/* ── HERO ── */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;
+  padding:120px 0 80px;overflow:hidden;
+}
+
+.hero-grid{
+  display:grid;grid-template-columns:1fr 420px;
+  gap:60px;align-items:center;
+}
+
+/* Brand */
+.brand{display:flex;align-items:center;gap:14px;margin-bottom:40px;animation:fu 1s ease both}
+.brand-icon{width:48px;height:48px}
+.brand-name{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:700;letter-spacing:.08em;color:var(--text)}
+.brand-sub{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:500}
+
+/* Badge */
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--b2);border-radius:100px;
+  padding:7px 18px;font-size:11px;font-weight:500;
+  color:var(--gold);letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:28px;background:rgba(201,168,76,.05);
+  animation:fu 1s ease .1s both;
+}
+.dot-live{width:7px;height:7px;background:#4ade80;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}50%{box-shadow:0 0 0 7px rgba(74,222,128,0)}}
+
+/* H1 */
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(50px,7vw,94px);font-weight:700;
+  line-height:.93;letter-spacing:-.02em;margin-bottom:10px;
+  animation:fu 1s ease .15s both;
+}
+.hw{color:var(--text)}
+.hg{
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold3) 50%,var(--gold) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;background-size:200%;
+  animation:goldsh 4s ease-in-out infinite;
+}
+@keyframes goldsh{0%,100%{background-position:0%}50%{background-position:100%}}
+
+/* Subtitle */
+.hero-sub{
+  font-size:clamp(14px,1.7vw,17px);color:var(--text2);
+  font-weight:300;line-height:1.75;max-width:520px;
+  margin-bottom:48px;animation:fu 1s ease .25s both;
+}
+.hero-sub strong{color:var(--gold);font-weight:500}
+
+/* Numbers */
+.hnums{display:flex;gap:40px;flex-wrap:wrap;animation:fu 1s ease .35s both}
+.hn{display:flex;flex-direction:column;gap:3px;position:relative}
+.hn+.hn::before{content:'';position:absolute;left:-20px;top:50%;transform:translateY(-50%);height:30px;width:1px;background:var(--b1)}
+.hn-v{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:700;color:var(--gold);line-height:1}
+.hn-l{font-size:11px;color:var(--text3);letter-spacing:.02em}
+
+/* Leo photo area */
+.hero-photo-wrap{
+  position:relative;animation:fu 1.2s ease .4s both;
+}
+.photo-glow{
+  position:absolute;inset:-30px;
+  background:radial-gradient(circle at 50% 60%,rgba(30,58,138,.5),transparent 70%);
+  border-radius:50%;filter:blur(40px);z-index:0;
+  animation:photoGlow 4s ease-in-out infinite alternate;
+}
+@keyframes photoGlow{from{opacity:.6;transform:scale(1)}to{opacity:1;transform:scale(1.05)}}
+
+.photo-ring{
+  position:absolute;inset:-2px;border-radius:28px;
+  background:linear-gradient(135deg,var(--gold),var(--sap2),var(--gold3),var(--sap));
+  z-index:1;animation:ringRotate 8s linear infinite;
+}
+@keyframes ringRotate{from{filter:hue-rotate(0deg)}to{filter:hue-rotate(30deg)}}
+
+.photo-ring-inner{
+  position:absolute;inset:2px;border-radius:26px;
+  background:var(--navy);z-index:2;
+}
+
+.leo-photo{
+  position:relative;z-index:3;
+  width:100%;border-radius:26px;
+  display:block;
+  filter:saturate(1.1) contrast(1.05);
+  transition:transform .4s ease;
+}
+.hero-photo-wrap:hover .leo-photo{transform:scale(1.02)}
+
+.photo-badge{
+  position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+  z-index:10;
+  background:rgba(7,16,31,.85);
+  border:1px solid var(--b2);
+  border-radius:100px;
+  padding:10px 24px;
+  white-space:nowrap;
+  backdrop-filter:blur(12px);
+  display:flex;align-items:center;gap:10px;
+  animation:badgeFloat 3s ease-in-out infinite;
+}
+@keyframes badgeFloat{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-5px)}}
+
+.photo-badge-dot{width:8px;height:8px;background:#4ade80;border-radius:50%;animation:pulse 2s infinite}
+.photo-badge-text{font-size:13px;font-weight:500;color:var(--text);letter-spacing:.03em}
+.photo-badge-sub{font-size:11px;color:var(--gold);font-weight:500}
+
+/* Corner decorations */
+.corner{position:absolute;width:20px;height:20px;z-index:4}
+.corner-tl{top:12px;left:12px;border-top:2px solid var(--gold);border-left:2px solid var(--gold)}
+.corner-tr{top:12px;right:12px;border-top:2px solid var(--gold);border-right:2px solid var(--gold)}
+.corner-bl{bottom:12px;left:12px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold)}
+.corner-br{bottom:12px;right:12px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold)}
+
+@keyframes fu{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── DIVIDER ── */
+.gold-line{height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.4),transparent)}
+
+/* ── SECTION HEADERS ── */
+.s-tag{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:10px;font-weight:500;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:18px;
+}
+.s-tag::before{content:'';width:22px;height:1px;background:var(--gold)}
+.s-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(34px,5vw,58px);font-weight:700;
+  letter-spacing:-.02em;line-height:1.05;margin-bottom:18px;
+}
+.s-desc{font-size:16px;color:var(--text2);line-height:1.75;max-width:580px;font-weight:300}
+
+/* ── CARDS ── */
+.card{
+  background:var(--card);border:1px solid var(--b1);
+  border-radius:16px;padding:32px;
+  transition:all .35s;position:relative;overflow:hidden;
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  opacity:0;transition:opacity .35s;
+}
+.card:hover::before{opacity:.6}
+.card:hover{border-color:var(--b2);box-shadow:var(--glow);transform:translateY(-3px)}
+.card-gold{background:linear-gradient(135deg,rgba(201,168,76,.06),rgba(201,168,76,.02));border-color:rgba(201,168,76,.18)}
+
+/* ── FEAT GRID ── */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;margin-top:52px}
+.fi{font-size:28px;margin-bottom:14px;display:block}
+.ft{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;margin-bottom:8px;color:var(--text)}
+.fd{font-size:13px;color:var(--text2);line-height:1.7;font-weight:300}
+
+/* ── HIGHLIGHT ── */
+.hl{
+  background:linear-gradient(135deg,rgba(201,168,76,.07),rgba(30,58,138,.07));
+  border:1px solid rgba(201,168,76,.22);border-radius:20px;
+  padding:44px;margin-top:48px;position:relative;overflow:hidden;
+}
+.hl::before{
+  content:'';position:absolute;top:-1px;left:15%;right:15%;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.hl p{font-size:18px;line-height:1.8;color:var(--text);font-weight:300}
+.hl strong{color:var(--gold);font-weight:600}
+
+/* ── WORKFLOW ── */
+.wf{margin-top:52px;display:flex;flex-direction:column;gap:12px}
+.wf-step{
+  display:flex;align-items:flex-start;gap:20px;
+  padding:22px 26px;background:var(--card);
+  border:1px solid var(--b1);border-radius:14px;transition:all .3s;
+}
+.wf-step:hover{border-color:var(--b2);box-shadow:var(--glow)}
+.wf-n{
+  width:34px;height:34px;min-width:34px;
+  background:linear-gradient(135deg,var(--gold),var(--sap2));
+  border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;color:var(--navy);
+}
+.wf-h{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;margin-bottom:4px;color:var(--text)}
+.wf-p{font-size:13px;color:var(--text2);line-height:1.6;font-weight:300}
+
+/* ── COMPARISON ── */
+.comp{margin-top:52px;border:1px solid var(--b1);border-radius:20px;overflow:hidden}
+.comp-h{
+  display:grid;grid-template-columns:2fr 1fr 1fr;
+  background:rgba(15,26,48,.9);padding:16px 26px;border-bottom:1px solid var(--b1);
+}
+.comp-h span{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text2)}
+.comp-h span:last-child{color:var(--gold)}
+.comp-r{
+  display:grid;grid-template-columns:2fr 1fr 1fr;
+  padding:13px 26px;border-bottom:1px solid var(--b1);
+  align-items:center;transition:background .2s;
+}
+.comp-r:last-child{border-bottom:none}
+.comp-r:hover{background:rgba(201,168,76,.03)}
+.comp-r span:first-child{font-size:13px;color:var(--text2);font-weight:300}
+.ck{color:#4ade80;font-size:17px;text-align:center}
+.cx{color:#2a3448;font-size:17px;text-align:center}
+
+/* ── TECH TAGS ── */
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.tag{
+  background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.2);
+  border-radius:8px;padding:7px 15px;font-size:12px;color:var(--gold2);font-weight:500;
+}
+
+/* ── BIG NUMS ── */
+.bns{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:14px;margin-top:52px}
+.bn{
+  background:var(--card);border:1px solid var(--b1);
+  border-radius:16px;padding:28px 20px;text-align:center;transition:all .3s;
+}
+.bn:hover{border-color:var(--b2);box-shadow:var(--glow)}
+.bn-v{
+  font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;
+  background:linear-gradient(135deg,var(--gold),var(--sap3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;line-height:1;margin-bottom:8px;
+}
+.bn-l{font-size:12px;color:var(--text3);line-height:1.4}
+
+/* ── QUOTE ── */
+.quote{
+  border-left:2px solid var(--gold);padding:18px 26px;
+  background:rgba(201,168,76,.04);border-radius:0 12px 12px 0;margin:36px 0;
+}
+.quote p{
+  font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;
+  color:var(--text);line-height:1.6;font-weight:400;
+}
+.quote strong{color:var(--gold);font-style:normal}
+
+/* ── LIST ── */
+.flist{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:10px}
+.flist li{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--text2);font-weight:300;line-height:1.5}
+.flist li::before{content:'—';color:var(--gold);flex-shrink:0;font-weight:600}
+.flist li strong{color:var(--text);font-weight:500}
+
+/* ── 2 COL ── */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
+
+/* ── PLATFORM CARDS ── */
+.plat{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px}
+.pc{background:var(--card);border:1px solid var(--b1);border-radius:16px;padding:32px;transition:all .3s}
+.pc:hover{border-color:var(--b2);box-shadow:var(--glow)}
+.pi{font-size:38px;margin-bottom:14px}
+.pn{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;margin-bottom:10px;color:var(--text)}
+.pd{font-size:13px;color:var(--text2);line-height:1.65;font-weight:300}
+
+/* ── LEO SECTION ── */
+.leo-section{
+  background:linear-gradient(135deg,rgba(30,58,138,.12),rgba(201,168,76,.06));
+  border-top:1px solid var(--b1);border-bottom:1px solid var(--b1);
+  padding:100px 0;
+}
+.leo-grid{display:grid;grid-template-columns:360px 1fr;gap:64px;align-items:center}
+.leo-photo-wrap{position:relative}
+.leo-photo-glow{
+  position:absolute;inset:-40px;
+  background:radial-gradient(circle at 50% 60%,rgba(30,58,138,.45),transparent 70%);
+  border-radius:50%;filter:blur(50px);z-index:0;
+  animation:photoGlow 4s ease-in-out infinite alternate;
+}
+.leo-ring{
+  position:absolute;inset:-2px;border-radius:28px;
+  background:linear-gradient(135deg,var(--gold),var(--sap2),var(--gold3),var(--sap));
+  z-index:1;
+}
+.leo-ring-in{position:absolute;inset:2px;border-radius:26px;background:var(--navy);z-index:2}
+.leo-img{
+  position:relative;z-index:3;width:100%;border-radius:26px;
+  display:block;filter:saturate(1.1) contrast(1.04);
+}
+.leo-corner{position:absolute;width:18px;height:18px;z-index:5}
+.leo-corner.tl{top:10px;left:10px;border-top:2px solid var(--gold);border-left:2px solid var(--gold)}
+.leo-corner.tr{top:10px;right:10px;border-top:2px solid var(--gold);border-right:2px solid var(--gold)}
+.leo-corner.bl{bottom:10px;left:10px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold)}
+.leo-corner.br{bottom:10px;right:10px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold)}
+
+.leo-id{
+  position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
+  z-index:10;background:rgba(7,16,31,.88);backdrop-filter:blur(12px);
+  border:1px solid var(--b2);border-radius:100px;padding:9px 22px;
+  white-space:nowrap;display:flex;align-items:center;gap:10px;
+  animation:badgeFloat 3s ease-in-out infinite;
+}
+.leo-id .dot-live{width:7px;height:7px}
+.leo-id-name{font-size:13px;font-weight:600;color:var(--text)}
+.leo-id-role{font-size:11px;color:var(--gold)}
+
+.leo-content .s-title{margin-top:0}
+
+.leo-traits{
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;
+}
+.trait{
+  background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.18);
+  border-radius:100px;padding:7px 18px;font-size:13px;color:var(--gold2);font-weight:500;
+  transition:all .2s;
+}
+.trait:hover{background:rgba(201,168,76,.14);border-color:var(--b2)}
+
+/* ── FOOTER CTA ── */
+.cta{
+  background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(30,58,138,.1));
+  border:1px solid rgba(201,168,76,.28);border-radius:24px;
+  padding:72px 48px;text-align:center;position:relative;overflow:hidden;
+  margin-top:48px;
+}
+.cta::before{
+  content:'';position:absolute;top:-1px;left:8%;right:8%;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),var(--sap3),transparent);
+}
+.cta h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(34px,5vw,58px);font-weight:700;
+  letter-spacing:-.02em;margin-bottom:22px;color:var(--text);
+}
+.cta p{font-size:17px;color:var(--text2);font-weight:300;max-width:500px;margin:0 auto;line-height:1.72}
+
+/* ── FOOTER ── */
+footer{
+  position:relative;z-index:2;border-top:1px solid var(--b1);
+  padding:52px 0;
+}
+.foot-inner{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+.foot-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;letter-spacing:.05em}
+.foot-logo span{color:var(--gold)}
+.foot-info{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center;font-size:12px;color:var(--text3);font-weight:300}
+.foot-sep{color:var(--b2)}
+.foot-copy{font-size:11px;color:var(--text3);letter-spacing:.05em}
+
+/* ── MOBILE ── */
+@media(max-width:700px){
+  .hero-grid,.leo-grid,.two,.plat{grid-template-columns:1fr}
+  .hero-photo-wrap{display:none}
+  .hnums{gap:24px}
+  .comp-h,.comp-r{grid-template-columns:1.4fr 1fr 1fr}
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- BG LAYERS -->
+<div class="bg-grid"></div>
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+<div class="orb o3"></div>
+
+<div class="wrap">
+
+<!-- ════════ HERO ════════ -->
+<section class="hero">
+  <!-- 3D Canvas inside hero -->
+  <canvas id="hero-canvas"></canvas>
+
+  <div class="container" style="position:relative;z-index:2;width:100%">
+    <div class="hero-grid">
+
+      <!-- LEFT -->
+      <div>
+        <div class="brand">
+          <!-- Logo SVG inline -->
+          <svg class="brand-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="24,3 37,20 24,30 11,20" fill="#1e3a8a" stroke="#c9a84c" stroke-width="1.4"/>
+            <polygon points="11,20 24,30 18,45 5,30" fill="#162e78" stroke="#c9a84c" stroke-width="1.4"/>
+            <polygon points="37,20 43,30 31,45 24,30" fill="#162e78" stroke="#c9a84c" stroke-width="1.4"/>
+            <circle cx="24" cy="3" r="2.2" fill="#c9a84c"/>
+            <circle cx="11" cy="20" r="1.8" fill="#c9a84c"/>
+            <circle cx="37" cy="20" r="1.8" fill="#c9a84c"/>
+            <circle cx="24" cy="30" r="2" fill="#dfc06a"/>
+            <circle cx="18" cy="45" r="1.5" fill="#c9a84c"/>
+            <circle cx="31" cy="45" r="1.5" fill="#c9a84c"/>
+            <line x1="24" y1="3" x2="11" y2="20" stroke="#c9a84c" stroke-width=".9"/>
+            <line x1="24" y1="3" x2="37" y2="20" stroke="#c9a84c" stroke-width=".9"/>
+            <line x1="11" y1="20" x2="37" y2="20" stroke="#c9a84c" stroke-width=".7" opacity=".6"/>
+            <line x1="11" y1="20" x2="24" y2="30" stroke="#c9a84c" stroke-width=".9"/>
+            <line x1="37" y1="20" x2="24" y2="30" stroke="#c9a84c" stroke-width=".9"/>
+            <line x1="24" y1="30" x2="18" y2="45" stroke="#c9a84c" stroke-width=".9"/>
+            <line x1="24" y1="30" x2="31" y2="45" stroke="#c9a84c" stroke-width=".9"/>
+            <line x1="18" y1="45" x2="31" y2="45" stroke="#c9a84c" stroke-width=".7" opacity=".6"/>
+          </svg>
+          <div>
+            <div class="brand-name">Venture AI</div>
+            <div class="brand-sub">Inteligência Artificial</div>
+          </div>
+        </div>
+
+        <div class="badge"><span class="dot-live"></span>Agente em produção · ao vivo agora</div>
+
+        <h1>
+          <span class="hw">Leo</span><br>
+          <span class="hg">Recrutamento</span><br>
+          <span class="hw">Reinventado.</span>
+        </h1>
+
+        <p class="hero-sub">
+          O primeiro <strong>Agente de Recrutamento e Seleção com IA</strong> que parece humano de verdade — porque ele pensa, reage, entrevista e decide. Pelo WhatsApp e Telegram. Sem site, sem formulário, sem robozão chato.
+        </p>
+
+        <div class="hnums">
+          <div class="hn"><span class="hn-v">82</span><span class="hn-l">nós de automação</span></div>
+          <div class="hn"><span class="hn-v">7</span><span class="hn-l">workflows ativos</span></div>
+          <div class="hn"><span class="hn-v">24/7</span><span class="hn-l">disponibilidade</span></div>
+          <div class="hn"><span class="hn-v">∞</span><span class="hn-l">candidatos simultâneos</span></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: LEO PHOTO -->
+      <div class="hero-photo-wrap">
+        <div class="photo-glow"></div>
+        <div class="photo-ring"><div class="photo-ring-inner"></div></div>
+        <img class="leo-photo" src="/mnt/user-data/uploads/image000897879.jpeg" alt="Leo — Agente de Recrutamento e Seleção da Venture AI">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+        <div class="photo-badge">
+          <span class="photo-badge-dot"></span>
+          <div>
+            <div class="photo-badge-text">Leo</div>
+            <div class="photo-badge-sub">Agente de R&S · Venture AI</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- ════════ O QUE É ════════ -->
+<section class="reveal">
+  <div class="container">
+    <div class="s-tag">O que é o Leo</div>
+    <h2 class="s-title">Não é um bot.<br>É um Agente de IA.</h2>
+    <p class="s-desc">A diferença não é pequena. É abissal. Bots seguem scripts. O Leo pensa, sente o contexto e age.</p>
+
+    <div class="hl">
+      <p>
+        Chatbots respondem mensagens programadas. O Leo <strong>pensa</strong>. Ele lê um currículo em PDF enviado no WhatsApp, entende o conteúdo, reage com entusiasmo genuíno e faz perguntas cirúrgicas baseadas no que leu. Ele detecta quando alguém está brincando. Ele cobra o candidato que sumiu. Ele manda feedback personalizado para 1.000 pessoas ao mesmo tempo — com o nome de cada uma.
+        <br><br>
+        Se alguém não te disser que o Leo é um Agente de IA, <strong>você não vai perceber.</strong>
+      </p>
+    </div>
+
+    <div class="two">
+      <div class="card card-gold">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;margin-bottom:12px;color:var(--gold);">Para o candidato</h3>
+        <p style="font-size:13px;color:var(--text2);line-height:1.72;font-weight:300">Nada de entrar em 10 sites, fazer 10 cadastros, preencher 10 formulários. O candidato abre o WhatsApp que já tem no celular, manda uma mensagem e está dentro do processo — sem perceber que é uma IA.</p>
+      </div>
+      <div class="card card-gold">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:700;margin-bottom:12px;color:var(--sap3);">Para o recrutador</h3>
+        <p style="font-size:13px;color:var(--text2);line-height:1.72;font-weight:300">Fala com o Leo pelo WhatsApp como falaria com um assistente humano. O Leo cria a vaga, entrevista todos, faz o ranking, manda os feedbacks e avisa quando o prazo chega. Você só toma a decisão final.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- ════════ LEO — QUEM É ════════ -->
+<section class="leo-section reveal">
+  <div class="container">
+    <div class="leo-grid">
+      <!-- PHOTO -->
+      <div class="leo-photo-wrap">
+        <div class="leo-photo-glow"></div>
+        <div class="leo-ring"><div class="leo-ring-in"></div></div>
+        <img class="leo-img" src="/mnt/user-data/uploads/image000897879.jpeg" alt="Leo — Agente de Recrutamento e Seleção da Venture AI">
+        <div class="leo-corner tl"></div>
+        <div class="leo-corner tr"></div>
+        <div class="leo-corner bl"></div>
+        <div class="leo-corner br"></div>
+        <div class="leo-id">
+          <span class="dot-live"></span>
+          <div>
+            <div class="leo-id-name">Leo</div>
+            <div class="leo-id-role">Agente de Recrutamento e Seleção · Venture AI</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="leo-content">
+        <div class="s-tag">Conheça o Leo</div>
+        <h2 class="s-title">26 anos.<br>Paulistano.<br>Disponível 24/7.</h2>
+        <p class="s-desc">O Leo tem personalidade real — é carismático, bem-humorado, empático e focado. Fala como gente de verdade pelo WhatsApp, usa as gírias certas na hora certa e sabe exatamente quando o candidato está brincando ou sendo sério.</p>
+
+        <div class="leo-traits">
+          <span class="trait">💬 Humanizado</span>
+          <span class="trait">🧠 Senso crítico</span>
+          <span class="trait">😄 Senso de humor</span>
+          <span class="trait">⚡ Reativo e rápido</span>
+          <span class="trait">🎯 Focado na vaga</span>
+          <span class="trait">📱 WhatsApp nativo</span>
+          <span class="trait">✈️ Telegram também</span>
+          <span class="trait">🔒 Nunca mente</span>
+          <span class="trait">🌙 Sem horário de almoço</span>
+          <span class="trait">🏖️ Sem férias</span>
+          <span class="trait">💰 Sem 13º</span>
+          <span class="trait">⏰ Zero afastamentos</span>
+        </div>
+
+        <div class="quote" style="margin-top:32px">
+          <p>"Se alguém não te disser que o Leo é uma automação com IA, <strong>você não vai perceber.</strong> Ele literalmente conversa contigo."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- ════════ MÓDULO CANDIDATO ════════ -->
+<section class="reveal">
+  <div class="container">
+    <div class="s-tag">Módulo candidato</div>
+    <h2 class="s-title">A entrevista que ninguém percebe<br>ser uma entrevista</h2>
+    <p class="s-desc">Processo completo de qualificação, 100% conversacional, pelo app que todo mundo já tem.</p>
+
+    <div class="feat-grid">
+      <div class="card">
+        <span class="fi">💬</span>
+        <div class="ft">Conversa real, não menu</div>
+        <div class="fd">Nenhuma mensagem é pré-programada. O Leo responde ao que o candidato escreve, com reações genuínas, humor e empatia de verdade.</div>
+      </div>
+      <div class="card">
+        <span class="fi">📄</span>
+        <div class="ft">Lê currículo de qualquer formato</div>
+        <div class="fd">PDF, DOCX, foto, print, imagem escaneada. O Leo lê e ainda faz perguntas de aprofundamento baseadas no que encontrou.</div>
+      </div>
+      <div class="card">
+        <span class="fi">💾</span>
+        <div class="ft">Salvamento silencioso e incremental</div>
+        <div class="fd">A cada dado coletado, o Leo salva na planilha sem o candidato perceber. Se a conversa cair no meio, nada é perdido.</div>
+      </div>
+      <div class="card">
+        <span class="fi">⏰</span>
+        <div class="ft">Follow-up automático a cada 30min</div>
+        <div class="fd">Candidato sumiu? O Leo cobra. Até 4 tentativas com variação de texto. Nenhum candidato cai no esquecimento.</div>
+      </div>
+      <div class="card">
+        <span class="fi">🛡️</span>
+        <div class="ft">Preparado para qualquer situação</div>
+        <div class="fd">Tenta enganar? Questiona. Brinca? Percebe. Sai do assunto? Desvia com humor e volta à vaga. Nada passa despercebido.</div>
+      </div>
+      <div class="card">
+        <span class="fi">🧠</span>
+        <div class="ft">Memória persistente entre sessões</div>
+        <div class="fd">Para e volta horas depois? O Leo continua de onde parou. Memória em banco PostgreSQL, independente da sessão do app.</div>
+      </div>
+      <div class="card">
+        <span class="fi">🔗</span>
+        <div class="ft">Link único por vaga</div>
+        <div class="fd">Cada vaga tem um ID exclusivo. O candidato clica no link e o WhatsApp abre com o código já digitado — só apertar enviar.</div>
+      </div>
+      <div class="card">
+        <span class="fi">🔒</span>
+        <div class="ft">Imune a bots de candidatura automática</div>
+        <div class="fd">Estão viralizando automações que mentem nos dados em LinkedIn/Gupy. Em conversa de WhatsApp isso é impossível — cada candidato é real e presencial.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- ════════ MÓDULO RECRUTADOR ════════ -->
+<section class="reveal">
+  <div class="container">
+    <div class="s-tag">Módulo recrutador</div>
+    <h2 class="s-title">Seu assistente de RH<br>que nunca tira férias</h2>
+    <p class="s-desc">O recrutador fala com o Leo pelo WhatsApp como falaria com um colega. O Leo cuida de todo o resto.</p>
+
+    <div class="wf">
+      <div class="wf-step">
+        <div class="wf-n">1</div>
+        <div>
+          <div class="wf-h">Cadastro de vaga conversacional</div>
+          <div class="wf-p">O Leo coleta tudo: cargo, senioridade, requisitos, diferenciais, regime, modelo, faixa salarial, prazo. Aceita texto, PDFs e fotos. Se detectar algo inconsistente, questiona.</div>
+        </div>
+      </div>
+      <div class="wf-step">
+        <div class="wf-n">2</div>
+        <div>
+          <div class="wf-h">Planilha exclusiva por empresa, criada automaticamente</div>
+          <div class="wf-p">Na primeira vaga, o Leo cria um Google Sheets exclusivo para aquela empresa — estruturado, com todas as colunas necessárias. Cada empresa tem seus dados isolados.</div>
+        </div>
+      </div>
+      <div class="wf-step">
+        <div class="wf-n">3</div>
+        <div>
+          <div class="wf-h">Notificação automática no dia de fechamento</div>
+          <div class="wf-p">Todo dia às 9h o sistema verifica as vagas com prazo vencendo. O recrutador recebe automaticamente: "oi! hoje é o dia de fechar a vaga de [cargo] 👀"</div>
+        </div>
+      </div>
+      <div class="wf-step">
+        <div class="wf-n">4</div>
+        <div>
+          <div class="wf-h">Ranking algorítmico score 0–100</div>
+          <div class="wf-p">Score determinístico cruzando 6 critérios com os dados da vaga: experiência (30pts), habilidades (25pts), diferenciais (15pts), senioridade (10pts), modalidade (10pts), pretensão (10pts).</div>
+        </div>
+      </div>
+      <div class="wf-step">
+        <div class="wf-n">5</div>
+        <div>
+          <div class="wf-h">Apresentação em ondas de 10</div>
+          <div class="wf-p">Pediu "top 3"? Recebe os 3 com análise. Pediu "todos"? Leo envia em ondas de 10 perguntando se quer continuar. Até 50 pelo app — acima disso, envia o link da planilha.</div>
+        </div>
+      </div>
+      <div class="wf-step">
+        <div class="wf-n">6</div>
+        <div>
+          <div class="wf-h">Devolutiva automática para 100% dos candidatos</div>
+          <div class="wf-p">O recrutador confirma quem passou. O Leo dispara automaticamente mensagens personalizadas para todos — aprovados e reprovados — com nome e contexto de cada um.</div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="flist" style="margin-top:32px">
+      <li><strong>CRUD completo:</strong> editar dados, excluir candidato, atualizar status — tudo pelo chat</li>
+      <li><strong>Follow-up para o recrutador:</strong> parou no meio do cadastro de vaga? O Leo cobra</li>
+      <li><strong>Busca instantânea:</strong> "me mostra os dados do Carlos Silva" — o Leo puxa na hora</li>
+      <li><strong>Fechamento antecipado:</strong> pode pedir ranking antes do prazo, a qualquer momento</li>
+      <li><strong>Multiplataforma:</strong> WhatsApp Business API + Telegram Bot API — comportamento idêntico</li>
+    </ul>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- ════════ COMPARATIVO ════════ -->
+<section class="reveal">
+  <div class="container">
+    <div class="s-tag">Comparativo</div>
+    <h2 class="s-title">Leo vs. tudo que<br>você já usou antes</h2>
+
+    <div class="comp">
+      <div class="comp-h">
+        <span>Funcionalidade</span>
+        <span style="text-align:center">Outros sistemas</span>
+        <span style="text-align:center">Leo — Venture AI</span>
+      </div>
+      <div class="comp-r"><span>Conversa humanizada com IA real</span><span class="cx">✗</span><span class="ck">✓</span></div>
+      <div class="comp-r"><span>Funciona direto no WhatsApp/Telegram</span><span class="cx">✗</span><span class="ck">✓</span></div>
+      <div class="comp-r"><span>Sem cadastro em site para o candidato</span><span class="cx">✗</span><span class="ck">✓</span></div>
+      <div class="comp-r"><span>Lê currículo em PDF/foto diretamente</span><span class="cx">✗</span><span class="ck">✓</span></div>
+      <div class="comp-r"><span>Ranking com score por critérios da vaga</span><span class="cx">✗</span><span class="ck">✓</span></div>
+      <div class="comp-r"><span>Devolutiva automática para 100% dos candidatos</span><span class="cx">✗</span><span class="ck">✓</span></div>
+      <div class="comp-r"><span>Notificação automática no fechamento da vaga</span><span class="cx">✗</span><span class="ck">✓</span></div>
+      <div class="comp-r"><span>Follow-up automático de candidatos inativos</span><span class="cx">✗</span><span class="ck">✓</span></div>
+      <div class="comp-r"><span>Imune a bots de candidatura automática</span><span class="cx">✗</span><span class="ck">✓</span></div>
+      <div class="comp-r"><span>Memória persistente entre sessões</span><span class="cx">✗</span><span class="ck">✓</span></div>
+      <div class="comp-r"><span>Planilha exclusiva por empresa, auto-criada</span><span class="cx">✗</span><span class="ck">✓</span></div>
+      <div class="comp-r"><span>Disponível 24/7 sem feriados ou almoço</span><span class="cx">✗</span><span class="ck">✓</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- ════════ PLATAFORMAS ════════ -->
+<section class="reveal">
+  <div class="container">
+    <div class="s-tag">Plataformas</div>
+    <h2 class="s-title">Onde o Brasil já está</h2>
+    <p class="s-desc">WhatsApp e Telegram são os dois apps de mensagem mais instalados no Brasil. Não precisa convencer ninguém a baixar nada.</p>
+
+    <div class="plat">
+      <div class="pc">
+        <div class="pi">💬</div>
+        <div class="pn">WhatsApp Business</div>
+        <div class="pd">Integrado via WhatsApp Business API. O candidato clica no link da vaga e o app abre com o código já digitado. Só apertar enviar.</div>
+      </div>
+      <div class="pc">
+        <div class="pi">✈️</div>
+        <div class="pn">Telegram Bot</div>
+        <div class="pd">Integrado via Telegram Bot API. Mesmo fluxo completo — entrevista, ranking, devolutiva — com link /start configurado por vaga.</div>
+      </div>
+    </div>
+
+    <div class="quote">
+      <p>O candidato <strong>nem vai perceber que está se candidatando a uma vaga</strong>. Vai parecer que está trocando mensagem com alguém do RH — porque é exatamente assim que o Leo conversa.</p>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- ════════ ARQUITETURA ════════ -->
+<section class="reveal">
+  <div class="container">
+    <div class="s-tag">Arquitetura & Escala</div>
+    <h2 class="s-title">O que está por baixo</h2>
+    <p class="s-desc">Um sistema de automação de nível enterprise, rodando 24 horas em servidor dedicado, com retry automático e redundância.</p>
+
+    <div class="bns">
+      <div class="bn"><div class="bn-v">82</div><div class="bn-l">nós no workflow principal</div></div>
+      <div class="bn"><div class="bn-v">7</div><div class="bn-l">workflows ativos em produção</div></div>
+      <div class="bn"><div class="bn-v">6</div><div class="bn-l">critérios de score no ranking</div></div>
+      <div class="bn"><div class="bn-v">2</div><div class="bn-l">agentes de IA independentes</div></div>
+      <div class="bn"><div class="bn-v">∞</div><div class="bn-l">empresas e vagas simultâneas</div></div>
+    </div>
+
+    <div style="margin-top:48px">
+      <div class="s-tag" style="margin-bottom:16px">Stack tecnológico</div>
+      <div class="tags">
+        <span class="tag">GPT-4.1 (OpenAI)</span>
+        <span class="tag">n8n Self-Hosted</span>
+        <span class="tag">WhatsApp Business API</span>
+        <span class="tag">Telegram Bot API</span>
+        <span class="tag">Google Sheets API</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">VPS Servidor Dedicado</span>
+        <span class="tag">HTTPS / SSL</span>
+        <span class="tag">Webhook Tempo Real</span>
+        <span class="tag">Retry Automático</span>
+        <span class="tag">Multi-tenant</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- ════════ ROI ════════ -->
+<section class="reveal">
+  <div class="container">
+    <div class="s-tag">Retorno sobre investimento</div>
+    <h2 class="s-title">Uma vaga. 1.000 candidatos.<br>Uma entrevista para você.</h2>
+
+    <div class="hl">
+      <p>
+        Uma empresa abre uma vaga e recebe 1.000 candidatos. Em um processo tradicional: <strong>centenas de horas</strong> de triagem, dezenas de entrevistas iniciais, candidatos bons que não receberam resposta e funcionários de RH esgotados.
+        <br><br>
+        Com o Leo: os 1.000 se candidatam pelo WhatsApp, o Leo entrevista todos, extrai os dados, calcula o score de cada um e entrega um ranking. <strong>O recrutador humano só faz a entrevista com o top 3, top 5 ou top 10 — já triados, rankeados e com análise completa.</strong>
+        <br><br>
+        O Leo não tem horário de almoço. Não tem dias ruins. Não pede aumento. Não tira férias. Não fica afastado. Não precisa de décimo terceiro. <strong>Ele só trabalha para você, com excelência, sempre.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- ════════ FICHA TÉCNICA ════════ -->
+<section class="reveal">
+  <div class="container">
+    <div class="s-tag">Ficha técnica completa</div>
+    <h2 class="s-title">Especificações do sistema</h2>
+
+    <div class="two" style="margin-top:44px">
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--gold);margin-bottom:14px;letter-spacing:.05em;text-transform:uppercase">Agente Candidato — Leo</h3>
+        <ul class="flist">
+          <li>Roteiro adaptativo de 12 perguntas</li>
+          <li>Leitura de currículo: PDF, DOCX, JPG, PNG, print</li>
+          <li>Salvamento incremental com anti-duplicata por nome</li>
+          <li>Follow-up automático a cada 30 min (até 4 tentativas)</li>
+          <li>Detecção e validação de respostas incoerentes</li>
+          <li>Verificação de requisitos críticos da vaga</li>
+          <li>Personalidade com senso de humor e empatia</li>
+          <li>Memória persistente via PostgreSQL</li>
+          <li>Retomada de sessão após interrupção</li>
+          <li>Coleta: nome, idade, cidade, habilidades, experiência, formação, certificações, pretensão, disponibilidade, modalidade, motivação, contato</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--sap3);margin-bottom:14px;letter-spacing:.05em;text-transform:uppercase">Agente Recrutador — Leo</h3>
+        <ul class="flist">
+          <li>Cadastro conversacional de vagas (17 campos)</li>
+          <li>Criação automática de planilha por empresa</li>
+          <li>Notificação de fechamento agendada (diariamente às 9h)</li>
+          <li>Ranking algorítmico: score 0–100 com 6 critérios</li>
+          <li>Apresentação em ondas (top N ou todos, até 50 via app)</li>
+          <li>Devolutiva automática para 100% dos candidatos</li>
+          <li>CRUD: criar, editar, deletar candidatos</li>
+          <li>Follow-up automático para recrutador inativo</li>
+          <li>Busca e consulta de candidatos via chat</li>
+          <li>Confirmação em múltiplas etapas para ações críticas</li>
+          <li>Banco centralizado RH_MESTRE + planilha por empresa</li>
+          <li>Links únicos por vaga com ID exclusivo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<!-- ════════ CTA ════════ -->
+<section class="reveal">
+  <div class="container">
+    <div class="cta">
+      <h2>O futuro do RH<br>já está rodando.</h2>
+      <p>O Leo não é um produto do futuro. É um Agente de Recrutamento e Seleção em produção, testado, refinado e pronto para trabalhar pela sua empresa — hoje, agora, sem parar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <div class="container">
+    <div class="foot-inner">
+      <div class="foot-logo"><span>Venture</span> AI</div>
+      <div style="font-size:13px;color:var(--text2);font-weight:300;font-family:'Cormorant Garamond',serif;font-style:italic">Leo — Agente de Recrutamento e Seleção com Inteligência Artificial</div>
+      <div class="foot-info">
+        <span>ISAQUE CARLOS DA SILVA</span>
+        <span class="foot-sep">·</span>
+        <span>CNPJ: 65.746.866/0001-91</span>
+        <span class="foot-sep">·</span>
+        <span>+55 11 94740-8207</span>
+      </div>
+      <div class="foot-copy">© 2026 Venture AI — Todos os direitos reservados.</div>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /wrap -->
+
+<script>
+// ══════════════════════════════════════════
+// THREE.JS 3D HERO ANIMATION
+// Estilo do logo Venture AI: cristais safira + estrutura dourada
+// ══════════════════════════════════════════
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x000000, 0);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  camera.position.set(0, 0, 14);
+
+  // Resize
+  function resize() {
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // ── LIGHTS ──
+  const ambLight = new THREE.AmbientLight(0x1a2550, 1.2);
+  scene.add(ambLight);
+
+  const goldLight = new THREE.PointLight(0xc9a84c, 3, 20);
+  goldLight.position.set(5, 5, 5);
+  scene.add(goldLight);
+
+  const blueLight = new THREE.PointLight(0x2d55b8, 4, 20);
+  blueLight.position.set(-5, -3, 4);
+  scene.add(blueLight);
+
+  const rimLight = new THREE.DirectionalLight(0x8ab4e8, 1.5);
+  rimLight.position.set(0, 10, -5);
+  scene.add(rimLight);
+
+  // ── MATERIALS ──
+  const sapphireMat = new THREE.MeshPhongMaterial({
+    color: 0x1a3580,
+    emissive: 0x0a1840,
+    specular: 0x4a80ff,
+    shininess: 120,
+    transparent: true,
+    opacity: 0.88,
+    side: THREE.DoubleSide,
+  });
+
+  const goldMat = new THREE.MeshStandardMaterial({
+    color: 0xc9a84c,
+    emissive: 0x3a2800,
+    metalness: 0.9,
+    roughness: 0.15,
+  });
+
+  const glowMat = new THREE.MeshBasicMaterial({ color: 0xdfc06a, transparent: true, opacity: 0.8 });
+
+  // ── MAIN GROUP ──
+  const mainGroup = new THREE.Group();
+  scene.add(mainGroup);
+
+  // ── BUILD LOGO GEOMETRY (V shape + diamond network) ──
+
+  // Vertices of the logo shape (approximated from Venture AI logo)
+  // Large V shape
+  function makeTriPrism(points2D, depth, mat) {
+    const shape = new THREE.Shape();
+    shape.moveTo(points2D[0][0], points2D[0][1]);
+    for (let i = 1; i < points2D.length; i++) shape.lineTo(points2D[i][0], points2D[i][1]);
+    shape.closePath();
+    const geo = new THREE.ExtrudeGeometry(shape, { depth, bevelEnabled: true, bevelSize: 0.05, bevelThickness: 0.05, bevelSegments: 2 });
+    return new THREE.Mesh(geo, mat);
+  }
+
+  // Left crystal shard
+  const leftShard = makeTriPrism([
+    [-2.2, 0.8],
+    [-0.6, -0.3],
+    [-0.05, -2.4],
+    [-1.0, -2.4],
+    [-2.6, -0.4],
+  ], 0.5, sapphireMat.clone());
+  leftShard.rotation.z = 0.05;
+  mainGroup.add(leftShard);
+
+  // Right crystal shard
+  const rightShard = makeTriPrism([
+    [0.05, -2.4],
+    [0.6, -0.3],
+    [2.2, 0.8],
+    [2.6, -0.4],
+    [1.0, -2.4],
+  ], 0.5, sapphireMat.clone());
+  rightShard.rotation.z = -0.05;
+  mainGroup.add(rightShard);
+
+  // Top diamond crystal
+  const topDiamond = makeTriPrism([
+    [-1.8, 2.8],
+    [0, 0.4],
+    [1.8, 2.8],
+    [0.8, 3.8],
+    [-0.8, 3.8],
+  ], 0.6, sapphireMat.clone());
+  mainGroup.add(topDiamond);
+
+  // ── GOLD NETWORK OVERLAY ──
+  const nodePositions = [
+    [0, 0, 0.5],         // center
+    [-1.6, 1.8, 0.6],   // top-left
+    [1.6, 1.8, 0.6],    // top-right
+    [0, 3.2, 0.7],       // top
+    [-1.2, -1.2, 0.4],  // bottom-left
+    [1.2, -1.2, 0.4],   // bottom-right
+    [-0.6, 0.8, 0.8],   // mid-left
+    [0.6, 0.8, 0.8],    // mid-right
+    [0, 1.6, 0.9],       // mid-top
+  ];
+
+  const nodeMeshes = [];
+  const sphereGeo = new THREE.SphereGeometry(0.1, 10, 10);
+  nodePositions.forEach(([x, y, z]) => {
+    const s = new THREE.Mesh(sphereGeo, goldMat);
+    s.position.set(x, y, z);
+    mainGroup.add(s);
+    nodeMeshes.push(s);
+  });
+
+  // Connections between nodes
+  const connections = [
+    [0,1],[0,2],[0,6],[0,7],[0,8],
+    [1,2],[1,3],[1,6],
+    [2,3],[2,7],
+    [3,8],[6,7],[6,8],[7,8],
+    [0,4],[0,5],[4,5],
+    [1,4],[2,5],
+  ];
+
+  function makeLine(a, b) {
+    const pts = [
+      new THREE.Vector3(...nodePositions[a]),
+      new THREE.Vector3(...nodePositions[b]),
+    ];
+    const geo = new THREE.BufferGeometry().setFromPoints(pts);
+    const mat = new THREE.LineBasicMaterial({ color: 0xc9a84c, transparent: true, opacity: 0.7 });
+    return new THREE.Line(geo, mat);
+  }
+
+  connections.forEach(([a, b]) => mainGroup.add(makeLine(a, b)));
+
+  // ── FLOATING CRYSTAL SHARDS (background) ──
+  const shards = [];
+  for (let i = 0; i < 12; i++) {
+    const geo = new THREE.OctahedronGeometry(Math.random() * 0.25 + 0.08, 0);
+    const mat = new THREE.MeshPhongMaterial({
+      color: i % 2 === 0 ? 0x1e3a8a : 0xc9a84c,
+      emissive: i % 2 === 0 ? 0x0a1a50 : 0x2a1800,
+      transparent: true,
+      opacity: Math.random() * 0.3 + 0.15,
+      shininess: 80,
+    });
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.position.set(
+      (Math.random() - 0.5) * 18,
+      (Math.random() - 0.5) * 14,
+      (Math.random() - 0.5) * 4 - 2
+    );
+    mesh.userData = {
+      vx: (Math.random() - 0.5) * 0.004,
+      vy: (Math.random() - 0.5) * 0.004,
+      rx: Math.random() * 0.012,
+      ry: Math.random() * 0.012,
+    };
+    scene.add(mesh);
+    shards.push(mesh);
+  }
+
+  // ── PARTICLE FIELD ──
+  const particleCount = 120;
+  const pPositions = new Float32Array(particleCount * 3);
+  for (let i = 0; i < particleCount; i++) {
+    pPositions[i * 3] = (Math.random() - 0.5) * 22;
+    pPositions[i * 3 + 1] = (Math.random() - 0.5) * 16;
+    pPositions[i * 3 + 2] = (Math.random() - 0.5) * 8 - 3;
+  }
+  const pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
+  const pMat = new THREE.PointsMaterial({ color: 0xc9a84c, size: 0.04, transparent: true, opacity: 0.4 });
+  const particles = new THREE.Points(pGeo, pMat);
+  scene.add(particles);
+
+  // ── MOUSE PARALLAX ──
+  let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
+  document.addEventListener('mousemove', (e) => {
+    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+    mouseY = -(e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  // ── ANIMATION LOOP ──
+  let t = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    t += 0.008;
+
+    // Smooth mouse follow
+    targetX += (mouseX - targetX) * 0.04;
+    targetY += (mouseY - targetY) * 0.04;
+
+    // Main logo group rotation
+    mainGroup.rotation.y = Math.sin(t * 0.4) * 0.25 + targetX * 0.3;
+    mainGroup.rotation.x = Math.sin(t * 0.3) * 0.12 + targetY * 0.15;
+    mainGroup.rotation.z = Math.sin(t * 0.2) * 0.05;
+    mainGroup.position.y = Math.sin(t * 0.5) * 0.18;
+
+    // Gold light orbit
+    goldLight.position.x = Math.cos(t * 0.6) * 6;
+    goldLight.position.z = Math.sin(t * 0.6) * 6;
+    goldLight.position.y = Math.sin(t * 0.4) * 3 + 3;
+
+    // Blue light orbit
+    blueLight.position.x = Math.cos(t * 0.5 + Math.PI) * 5;
+    blueLight.position.z = Math.sin(t * 0.5 + Math.PI) * 5;
+
+    // Node pulsing
+    nodeMeshes.forEach((s, i) => {
+      const sc = 1 + Math.sin(t * 1.5 + i * 0.8) * 0.15;
+      s.scale.setScalar(sc);
+    });
+
+    // Floating shards
+    shards.forEach(s => {
+      s.position.x += s.userData.vx;
+      s.position.y += s.userData.vy;
+      if (Math.abs(s.position.x) > 10) s.userData.vx *= -1;
+      if (Math.abs(s.position.y) > 8) s.userData.vy *= -1;
+      s.rotation.x += s.userData.rx;
+      s.rotation.y += s.userData.ry;
+    });
+
+    // Particles slow drift
+    particles.rotation.y = t * 0.02;
+
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+
+// ══════════════════════════════════════════
+// SCROLL REVEAL
+// ══════════════════════════════════════════
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(r => observer.observe(r));
+
+// ══════════════════════════════════════════
+// FLOATING PARTICLES CSS (injected)
+// ══════════════════════════════════════════
+(function() {
+  const container = document.createElement('div');
+  container.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden';
+  document.body.appendChild(container);
+  for (let i = 0; i < 20; i++) {
+    const p = document.createElement('div');
+    const size = Math.random() * 3 + 1;
+    const dur = Math.random() * 20 + 15;
+    const delay = Math.random() * 20;
+    const left = Math.random() * 100;
+    const drift = (Math.random() - 0.5) * 100;
+    p.style.cssText = `
+      position:absolute;
+      width:${size}px;height:${size}px;
+      background:rgba(201,168,76,${Math.random() * 0.4 + 0.1});
+      border-radius:50%;
+      left:${left}%;
+      bottom:-10px;
+      animation:pFloat ${dur}s ${delay}s ease-in-out infinite;
+    `;
+    container.appendChild(p);
+  }
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes pFloat {
+      0% { opacity:0; transform:translateY(0) translateX(0); }
+      10% { opacity:1; }
+      90% { opacity:0.3; }
+      100% { opacity:0; transform:translateY(-100vh) translateX(${50}px); }
+    }
+  `;
+  document.head.appendChild(style);
+})();
+</script>
+
+</body>
+</html>
